@@ -204,7 +204,6 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -278,7 +277,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TWS.Data\TWS.Data.csproj">
-      <Project>{1c12466e-2bab-46dc-91a9-6f97c94eca2d}</Project>
+      <Project>{9a8240b4-000d-4bb4-b120-5a739d14d0fe}</Project>
       <Name>TWS.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\TWS.Models\TWS.Models.csproj">

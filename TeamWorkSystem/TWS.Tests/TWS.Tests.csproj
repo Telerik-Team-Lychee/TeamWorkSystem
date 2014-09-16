@@ -4,6 +4,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A3723D02-8C07-42B1-8F1B-B52805AD0910}</ProjectGuid>
+    <ProjectGuid>{A47DAF8A-C75C-40B6-AF56-460EDDA58299}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TWS.Tests</RootNamespace>
