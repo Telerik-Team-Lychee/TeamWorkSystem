@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TeamWorkSystem.Model
+namespace TWS.Models
 {
     class Task
     {
@@ -13,6 +13,5 @@ namespace TeamWorkSystem.Model
         // prioritet
         // user
         // status
-        // 
     }
 }

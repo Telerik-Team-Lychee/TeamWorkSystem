@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TeamWorkSystem.Model
+namespace TWS.Models
 {
-    class Requests
+    class Request
     {
         // fromUser
         // teamworkId
