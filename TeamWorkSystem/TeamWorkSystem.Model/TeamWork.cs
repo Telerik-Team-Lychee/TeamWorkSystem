@@ -9,13 +9,14 @@ namespace TeamWorkSystem.Model
     class TeamWork
     {
 
-        // ime
+        // team name
         // opisanie
         // admin
         // users
         // links
         // githubLink
         // final solution
+		// start date = datetime.now pri suzdavane
         // kraen srok
         // rezultat
 		// status inprogress/finished
