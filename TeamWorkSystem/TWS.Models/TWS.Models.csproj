@@ -7,8 +7,8 @@
     <ProjectGuid>{DC044A84-0E26-4670-8358-3B46D6A660D3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TWS.Model</RootNamespace>
-    <AssemblyName>TWS.Model</AssemblyName>
+    <RootNamespace>TWS.Models</RootNamespace>
+    <AssemblyName>TWS.Models</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -52,10 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category.cs" />
     <Compile Include="Event.cs" />
-    <Compile Include="MessageBoard.cs" />
+    <Compile Include="Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request.cs" />
+    <Compile Include="Resource.cs" />
     <Compile Include="Task.cs" />
     <Compile Include="TeamWork.cs" />
     <Compile Include="User.cs" />
