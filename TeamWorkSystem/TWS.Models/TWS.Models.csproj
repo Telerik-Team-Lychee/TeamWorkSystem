@@ -54,7 +54,6 @@
   <ItemGroup>
     <Compile Include="Enumerations\Category.cs" />
     <Compile Include="Enumerations\AssignmentStatus.cs" />
-    <Compile Include="Event.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource.cs" />

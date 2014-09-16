@@ -5,7 +5,7 @@
 	using System.ComponentModel.DataAnnotations;
 	using System.ComponentModel.DataAnnotations.Schema;
 
-    using TWS.Models.Enumerations;
+	using TWS.Models.Enumerations;
 
 	public class TeamWork
 	{
@@ -13,15 +13,15 @@
 		private ICollection<Message> messages;
 		private ICollection<Resource> resources;
 		private ICollection<TeamWorkRequest> requests;
-        private ICollection<Assignment> assignments;
+		private ICollection<Assignment> assignments;
 
 		public TeamWork()
 		{
 			this.users = new HashSet<User>();
 			this.messages = new HashSet<Message>();
 			this.resources = new HashSet<Resource>();
-            this.requests = new HashSet<TeamWorkRequest>();
-            this.assignments = new HashSet<Assignment>();
+			this.requests = new HashSet<TeamWorkRequest>();
+			this.assignments = new HashSet<Assignment>();
 			this.StartDate = DateTime.Now;
 		}
 
@@ -53,20 +53,20 @@
 		[Required]
 		public Category Category { get; set; }
 
-        public virtual ICollection<Assignment> Assignments
-        {
-            get
-            {
-                return this.assignments;
-            }
+		public virtual ICollection<Assignment> Assignments
+		{
+			get
+			{
+				return this.assignments;
+			}
 
-            set
-            {
-                this.assignments = value;
-            }
-        }
+			set
+			{
+				this.assignments = value;
+			}
+		}
 
-        public virtual ICollection<TeamWorkRequest> Requests
+		public virtual ICollection<TeamWorkRequest> Requests
 		{
 			get
 			{
@@ -90,8 +90,8 @@
 			}
 		}
 
-		public virtual ICollection<Message> Messages 
-		{ 
+		public virtual ICollection<Message> Messages
+		{
 			get
 			{
 				return this.messages;
