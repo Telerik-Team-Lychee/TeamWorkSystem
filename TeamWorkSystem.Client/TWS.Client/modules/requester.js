@@ -5,7 +5,9 @@
         var requestOptions = {
             url: url,
             type: type,
+            //dataType: "application/x-www-form-urlencoded",
             data: data,
+            //ContentType: "text/json",
             success: function resolveDeferred(requestData) {
                 deferred.resolve(requestData);
             },
@@ -14,8 +16,12 @@
             }
         }
 
-        if (content !== null) {
+        if (content == null) {
             requestOptions.contentType = "application/json; charset=utf-8";
+        }
+        else
+        {
+            requestOptions.contentType = content;
         }
 
         $.ajax(requestOptions);
@@ -28,7 +34,7 @@
     }
 
     function makePostRequest(url, data, content) {
-        return makeRequest(url, "post", data, content);
+        return makeRequest(url, "POST", data, content);
     }
 
     return {

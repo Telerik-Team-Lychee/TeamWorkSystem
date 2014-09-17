@@ -1,6 +1,6 @@
 ﻿define(["jquery", "modules"], function ($, modules) {
     var userInfo = {},
-        url = modules.config.apiURL + "Account/Register";
+        url = modules.config.apiURL + "api/Account/Register";
 
     function run() {
         modules.view.load("register")
@@ -20,12 +20,16 @@
 
             addMessage();
         });
+
+
     }
 
     function addMessage() {
-        modules.request.post(url, JSON.stringify(userInfo))
+        var data = "Email=" + userInfo['Email'] + "&Password=" + userInfo['Password'] + "&ConfirmPassword=" + userInfo['ConfirmPassword'];
+
+        modules.request.post(url, data, "application/x-www-form-urlencoded")
         .then(function () {
-            modules.redirect("#/");
+            modules.redirect("#/login");
         });
     }
 

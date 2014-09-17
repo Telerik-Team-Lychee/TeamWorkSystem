@@ -1,4 +1,4 @@
-﻿define(["jquery", "modules", "appConfig"], function ($, modules, appConfig) {
+define(["jquery", "modules", "appConfig"], function ($, modules, appConfig) {
     var url = modules.config.apiURL + "api/teamworks/" ;
 
     function run() {

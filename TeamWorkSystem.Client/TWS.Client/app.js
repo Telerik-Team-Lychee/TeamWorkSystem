@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
     require.config({
         paths: {
             // Libs
@@ -25,11 +25,13 @@
         var app = sammy("#mainContent", function () {
 
             this.get("#/", function () {
-                if (modules.storager.get("user") !== null) {
-                    require([appConfig.controllersPath + "listTeamWorksController"], function (file) {
-                        file.run();
-                    });
-                }
+                //if (modules.storager.get("user") !== null) {
+                    
+                //}
+                
+                require([appConfig.controllersPath + "listTeamWorksController"], function (file) {
+                    file.run();
+                });
             });
 
             this.get("#/register", function () {
