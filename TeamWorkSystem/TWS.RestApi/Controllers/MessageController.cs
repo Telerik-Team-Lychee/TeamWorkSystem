@@ -56,6 +56,8 @@ using TWS.RestApi.Infrastructure;
                 return BadRequest("Invalid Id - no such message existing!");
             }
 
+            this.data.SaveChanges();
+
             return Ok(message);
         }
     }
