@@ -11,11 +11,6 @@
     {
         private IUserIdProvider userIdProvider;
 
-        public RequestController()
-            : this(new TwsData(), new AspNetUserIdProvider())
-        {
-        }
-
         public RequestController(ITwsData data, IUserIdProvider userIdProvider)
             : base(data)
         {

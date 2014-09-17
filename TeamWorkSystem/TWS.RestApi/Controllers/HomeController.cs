@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace TWS.RestApi.Controllers
+﻿namespace TWS.RestApi.Controllers
 {
-    public class HomeController : Controller
-    {
-        public ActionResult Index()
-        {
-            ViewBag.Title = "Home Page";
+	using System.Web.Mvc;
 
-            return View();
-        }
-    }
+	public class HomeController : Controller
+	{
+		public ActionResult Index()
+		{
+			ViewBag.Title = "Home Page";
+
+			return View();
+		}
+	}
 }
