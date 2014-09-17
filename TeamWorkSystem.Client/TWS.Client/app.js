@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
     require.config({
         paths: {
             // Libs
@@ -42,6 +42,12 @@
 
             this.get("#/login", function () {
                 require([appConfig.controllersPath + "loginController"], function (file) {
+                    file.run();
+                });
+            });
+
+            this.get("#/teamworks", function () {
+                require([appConfig.controllersPath + "listTeamWorksController"], function (file) {
                     file.run();
                 });
             });

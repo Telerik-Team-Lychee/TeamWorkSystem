@@ -86,7 +86,58 @@ body {
 .top-nav>.open>.dropdown-menu>li>a {
     white-space: normal;
 }
+/*dropdown menu*/
+.navbar-nav .submenu {
+    display: none;
+    list-style-type: none;  
+    position: absolute;
+    background-color: #f8f8f8;
+    border: 1px solid #e7e7e7;
+    border-radius: 4px;
+    z-index: 1;
+    min-width: 130px;
 
+}
+
+.navbar-nav .submenu li {
+       padding: 5px;
+       margin-left: -20px;
+       color: #777;
+}
+
+.navbar-nav .submenu li a {
+       color: #777;
+       text-decoration: none;
+}
+
+.navbar-nav .submenu li a:hover {
+       color: #000;
+}
+
+.navbar-nav li:hover .submenu{
+    display: block;
+    border-top:none;
+}
+.category-box {
+    right: clear;
+    margin-bottom: 10px;
+}
+.teamwork-box {
+    position: relative;
+    display: inline-block;
+    width: 48%;
+    border: 1px solid #e7e7e7;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.not-logged-in {
+
+}
+
+.logged-in {
+
+}
 ul.message-dropdown {
     padding: 0;
     max-height: 250px;
