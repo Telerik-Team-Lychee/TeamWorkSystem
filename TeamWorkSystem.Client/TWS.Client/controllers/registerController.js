@@ -20,8 +20,6 @@
 
             addMessage();
         });
-
-
     }
 
     function addMessage() {

@@ -1,0 +1,64 @@
+﻿<div class="col-lg-8">
+    <h1>New Teamwork</h1>
+    <form class="form-horizontal" method="POST">
+        <fieldset>
+            <!-- Text input-->
+            <div class="control-group">
+                <label class="control-label" for="Name">Name</label>
+                <div class="controls">
+                    <input id="Name" name="Name" type="text" placeholder="Enter teamwork name..." class="form-control">
+
+                </div>
+            </div>
+
+            <!-- Textarea -->
+            <div class="control-group">
+                <label class="control-label" for="Description">Description</label>
+                <div class="controls">
+                    <textarea id="Description" name="Description"></textarea>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="control-group">
+                <label class="control-label" for="GitHubLink">Repository</label>
+                <div class="controls">
+                    <input id="GitHubLink" name="GitHubLink" type="text" placeholder="Enter repository link..." class="form-control">
+
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="control-group">
+                <label class="control-label" for="Category">Select Category</label>
+                <div class="controls">
+                    <select id="Category" name="Category" class="form-control" data-template="category-template">
+                    </select>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="control-group">
+                <label class="control-label" for="EndDate">End Date</label>
+                <div class="controls">
+                    <input id="EndDate" name="EndDate" type="text" placeholder="mm-dd-yyyy" class="form-control">
+
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="control-group">
+                <label class="control-label" for="create-teamwork"></label>
+                <div class="controls">
+                    <button class="btn btn-default" id="create-teamwork">Create</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<script id="category-template" type="text/x-mustache-template">
+    <option id="{{id}}" class="list-group-item">
+        {{{Name}}}
+    </option>
+</script>

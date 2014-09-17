@@ -118,18 +118,44 @@ body {
     display: block;
     border-top:none;
 }
-.category-box {
-    right: clear;
-    margin-bottom: 10px;
+/*listTeamwork*/
+.top-box {
+    clear: right;
+    vertical-align: top;
 }
 .teamwork-box {
     position: relative;
     display: inline-block;
-    width: 48%;
     border: 1px solid #e7e7e7;
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
+    margin-top: 10px;
+}
+#new-teamwork {
+    right:10px;
+    top:20px;
+    padding: 10px;
+    border: 2px solid #777;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight:bold;
+    background: #e7e7e7;
+    color: #000;
+    position: absolute;
+    text-decoration: none;
+}
+#new-teamwork:hover {
+    background: #f7f7f7;
+}
+/*newTeamwork*/
+#Description {
+    min-width: 640px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+#EndDate {
+    width: 110px;
 }
 .not-logged-in {
 
@@ -138,6 +164,7 @@ body {
 .logged-in {
 
 }
+
 ul.message-dropdown {
     padding: 0;
     max-height: 250px;

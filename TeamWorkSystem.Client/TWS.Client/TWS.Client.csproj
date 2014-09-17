@@ -68,6 +68,7 @@
     <Content Include="app.js" />
     <Content Include="controllers\listTeamWorksController.js" />
     <Content Include="controllers\loginController.js" />
+    <Content Include="controllers\newTeamworkController.js" />
     <Content Include="controllers\registerController.js" />
     <Content Include="controllers\teamworkController.js" />
     <Content Include="index.html" />
@@ -86,6 +87,7 @@
     <Content Include="styles\bootstrap.min.css" />
     <Content Include="styles\sb-admin.css" />
     <Content Include="views\login.html" />
+    <Content Include="views\newTeamwork.html" />
     <Content Include="views\register.html" />
     <Content Include="views\listTeamworks.html" />
     <Content Include="views\teamwork.html" />
@@ -110,7 +112,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>2411</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:2411/</IISUrl>
+          <IISUrl>http://localhost:2114/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -54,6 +54,12 @@
                     file.run(teamworkId);
                 });
             });
+
+            this.get("#/newteamwork", function () {
+                require([appConfig.controllersPath + "newTeamworkController"], function (file) {
+                    file.run();
+                });
+            });
         });
 
         app.run("#/");
