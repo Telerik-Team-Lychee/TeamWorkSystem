@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>3bebc2c1-461a-456a-b04a-1245cc92a08d</ProjectGuid>
+    <ProjectGuid>{A47DAF8A-C75C-40B6-AF56-460EDDA58299}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TWS.Tests</RootNamespace>
