@@ -30,7 +30,6 @@
                         file.run();
                     });
                 }
-                
             });
 
             this.get("#/register", function () {
@@ -45,6 +44,11 @@
                 });
             });
 
+            this.get("#/teamworks", function () {
+                require([appConfig.controllersPath + "listTeamWorksController"], function (file) {
+                    file.run();
+                });
+            });
         });
 
         app.run("#/");

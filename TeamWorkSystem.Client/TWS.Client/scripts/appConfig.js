@@ -1,7 +1,7 @@
 ﻿define(function () {
     return {
         // API URL
-        apiURL: "http://localhost:58181/api/",
+        apiURL: "http://localhost:2411/api/",
 
         // Main application content container
         mainContainer: "#mainContent",
