@@ -1,0 +1,10 @@
+﻿<div class="col-lg-8">
+     <ul id="messages" data-template="messages-template" class="list-group"></ul>
+</div>
+
+<script id="messages-template" type="text/x-mustache-template">
+    <li id="{{id}}" class="list-group-item">
+        <span>Message: </span>{{{text}}}
+        <span>by: </span>{{by}}
+    </li>
+</script>
