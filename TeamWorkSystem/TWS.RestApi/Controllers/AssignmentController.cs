@@ -6,11 +6,12 @@
     using System.Net;
     using System.Net.Http;
     using System.Web.Http;
-
+    using System.Web.Http.Cors;
     using TWS.Data;
     using TWS.Models;
     using TWS.RestApi.Infrastructure;
 
+    [EnableCors("*", "*", "*")]
     public class AssignmentController : BaseApiController
     {
         private IUserIdProvider userIdProvider;
