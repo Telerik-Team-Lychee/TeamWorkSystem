@@ -45,6 +45,12 @@
                 });
             });
 
+            this.get("#/viewValues", function () {
+                require([appConfig.controllersPath + "valuesController"], function (file) {
+                    file.run();
+                });
+            });
+
         });
 
         app.run("#/");

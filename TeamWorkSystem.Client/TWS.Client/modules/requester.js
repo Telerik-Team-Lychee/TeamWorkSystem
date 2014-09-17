@@ -5,6 +5,7 @@
         var requestOptions = {
             url: url,
             type: type,
+            //dataType: 'jsonp',
             data: data,
             success: function resolveDeferred(requestData) {
                 deferred.resolve(requestData);
@@ -14,8 +15,12 @@
             }
         }
 
-        if (content !== null) {
+        if (content == null) {
             requestOptions.contentType = "application/json; charset=utf-8";
+        }
+        else
+        {
+            requestOptions.contentType = content;
         }
 
         $.ajax(requestOptions);
