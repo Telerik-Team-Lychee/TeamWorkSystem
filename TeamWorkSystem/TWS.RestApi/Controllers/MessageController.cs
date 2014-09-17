@@ -1,14 +1,16 @@
 ﻿namespace TWS.RestApi.Controllers
 {
     using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using TWS.Data;
-using TWS.Models;
-using TWS.RestApi.Infrastructure;
+    using Microsoft.AspNet.Identity;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Http;
+    using System.Web.Http;
+    using TWS.Data;
+    using TWS.Models;
+    using TWS.RestApi.Infrastructure;
+    using TWS.RestApi.Models;
     public class MessageController : BaseApiController
     {
         private IUserIdProvider userIDProvider;
@@ -25,25 +27,36 @@ using TWS.RestApi.Infrastructure;
         }
 
         [HttpPost]
-        public IHttpActionResult Create(Message message)
+        public IHttpActionResult Create(MessageModel messageModel)
         {
             if (!this.ModelState.IsValid)
             {
                 return BadRequest(this.ModelState);
             }
 
-            this.data.Messages.Add(message);
+            var newMessage = new Message()
+            {
+                Id = messageModel.Id,
+                Text = messageModel.Text,
+                PostDate = messageModel.PostDate,
+                TeamWorkId = messageModel.TeamWorkId,
+                SentBy = messageModel.SentBy
+
+            };
+            this.data.Messages.Add(newMessage);
             this.data.SaveChanges();
 
-            return Ok(message);
+            messageModel.Id = newMessage.Id;
+
+            return Ok(messageModel);
         }
 
         [HttpGet]
-        public IHttpActionResult All(int teamWorkId)
+        public IQueryable<MessageModel> All(int teamWorkId)
         {
-            var messages = this.data.Messages.All().Where(m => m.TeamWorkId == teamWorkId);
+            var messages = this.data.Messages.All().Select(MessageModel.FromMessage).Where(m => m.TeamWorkId == teamWorkId);
 
-            return Ok(messages);
+            return messages;
         }
 
         [HttpDelete]
