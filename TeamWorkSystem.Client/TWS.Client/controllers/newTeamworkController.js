@@ -30,16 +30,16 @@
         });
     }
 
-        function addmessage() {
-            var data = "Name=" + teamworkInfo['Name'] + "&Description=" + teamworkInfo['Description'] + "&GitHubLink=" + teamworkInfo['GitHubLink']
-            + "&Category" + teamworkInfo['Category'] + "&EndDate=" + teamworkInfo['EndDate'];
+    function addmessage() {
+        var data = "Name=" + teamworkInfo['Name'] + "&Description=" + teamworkInfo['Description'] + "&GitHubLink=" + teamworkInfo['GitHubLink']
+        + "&Category" + teamworkInfo['Category'] + "&EndDate=" + teamworkInfo['EndDate'];
             
-            modules.request.post(url, data, "application/x-www-form-urlencoded")
-            .then(function (requestData) {
-                var id = requestData.id;
-                modules.redirect("#/teamworks/" + id);
-            });
-        }
+        modules.request.post(url, data, "application/x-www-form-urlencoded")
+        .then(function (requestData) {
+            var id = requestData.id;
+            modules.redirect("#/teamworks/" + id);
+        });
+    }
 
     return {
         run: run
