@@ -23,7 +23,6 @@
 
         public virtual TeamWork TeamWork { get; set; }
 
-        [ForeignKey("User")]
         public string SentById { get; set; }
 
         public User SentBy { get; set; }

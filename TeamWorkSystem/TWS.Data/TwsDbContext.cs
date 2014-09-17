@@ -18,11 +18,7 @@
 
 		public IDbSet<Resource> Resources { get; set; }
 
-		public IDbSet<User> Users { get; set; }
-
 		public IDbSet<Message> Messages { get; set; }
-
-		public IDbSet<TeamWorkRequest> Request { get; set; }
 
 		public IDbSet<Assignment> Assignments { get; set; }
 
@@ -31,6 +27,26 @@
 		public static TwsDbContext Create()
 		{
 			return new TwsDbContext();
+		}
+
+		protected override void OnModelCreating(DbModelBuilder modelBuilder)
+		{
+			modelBuilder.Entity<TeamWorkRequest>()
+				.HasRequired(user => user.SentBy)
+				.WithMany(request => request.TeamWorkRequests)
+				.WillCascadeOnDelete(false);
+
+			modelBuilder.Entity<Message>()
+				.HasRequired(user => user.SentBy)
+				.WithMany(message => message.Messages)
+				.WillCascadeOnDelete(false);
+
+			modelBuilder.Entity<Resource>()
+				.HasRequired(user => user.UploadedBy)
+				.WithMany(resource => resource.Resources)
+				.WillCascadeOnDelete(false);
+
+			base.OnModelCreating(modelBuilder);
 		}
 	}
 }

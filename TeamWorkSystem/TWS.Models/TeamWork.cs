@@ -9,7 +9,7 @@
 
 	public class TeamWork
 	{
-		private ICollection<User> users;
+		private ICollection<UsersTeamWorks> users;
 		private ICollection<Message> messages;
 		private ICollection<Resource> resources;
 		private ICollection<TeamWorkRequest> requests;
@@ -17,7 +17,7 @@
 
 		public TeamWork()
 		{
-			this.users = new HashSet<User>();
+			this.users = new HashSet<UsersTeamWorks>();
 			this.messages = new HashSet<Message>();
 			this.resources = new HashSet<Resource>();
 			this.requests = new HashSet<TeamWorkRequest>();
@@ -35,13 +35,9 @@
 		[MinLength(5)]
 		public string Description { get; set; }
 
+		[Index("IX_Unique_GitHub_Link", IsUnique = true)]
+		[MaxLength(1000)]
 		[Required]
-		[ForeignKey("User")]
-		public string AdminId { get; set; }
-
-		public virtual User Admin { get; set; }
-
-		[Index(IsUnique = true)]
 		public string GitHubLink { get; set; }
 
 		[Required]
@@ -102,7 +98,7 @@
 			}
 		}
 
-		public virtual ICollection<User> Users
+		public virtual ICollection<UsersTeamWorks> Users
 		{
 			get
 			{
