@@ -1,9 +1,9 @@
 ﻿define(["jquery", "modules"], function ($, modules) {
-    var messageInfo = {},
-        url = modules.config.apiURL;
+    var userInfo = {},
+        url = modules.config.apiURL + "Account/Register";
 
     function run() {
-        modules.view.load("sendMessage")
+        modules.view.load("register")
         .then(function (data) {
             addEvents();
         });
@@ -15,7 +15,7 @@
             var self = $(this);
 
             $.each(self.serializeArray(), function (i, input) {
-                messageInfo[input.name] = input.value;
+                userInfo[input.name] = input.value;
             });
 
             addMessage();
@@ -23,7 +23,7 @@
     }
 
     function addMessage() {
-        modules.request.post(url, JSON.stringify(messageInfo))
+        modules.request.post(url, JSON.stringify(userInfo))
         .then(function () {
             modules.redirect("#/");
         });

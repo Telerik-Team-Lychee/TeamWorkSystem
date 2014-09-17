@@ -21,17 +21,26 @@
         }
     });
 
-    require(["sammy", "appConfig", "templater"], function (sammy, appConfig) {
+    require(["sammy", "appConfig", "templater", "modules"], function (sammy, appConfig, modules) {
         var app = sammy("#mainContent", function () {
 
             this.get("#/", function () {
-                require([appConfig.controllersPath + "listMessagesController"], function (file) {
+                if (modules.storager.get("user") !== null) {
+                    require([appConfig.controllersPath + "listTeamWorksController"], function (file) {
+                        file.run();
+                    });
+                }
+                
+            });
+
+            this.get("#/register", function () {
+                require([appConfig.controllersPath + "registerController"], function (file) {
                     file.run();
                 });
             });
 
-            this.get("#/send", function () {
-                require([appConfig.controllersPath + "sendMessageController"], function (file) {
+            this.get("#/login", function () {
+                require([appConfig.controllersPath + "loginController"], function (file) {
                     file.run();
                 });
             });

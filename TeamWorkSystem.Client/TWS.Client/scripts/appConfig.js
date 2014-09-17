@@ -1,7 +1,7 @@
 ﻿define(function () {
     return {
         // API URL
-        apiURL: "http://crowd-chat.herokuapp.com/posts",
+        apiURL: "http://localhost:58181/api/",
 
         // Main application content container
         mainContainer: "#mainContent",
