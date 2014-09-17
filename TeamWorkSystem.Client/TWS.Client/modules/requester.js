@@ -5,8 +5,9 @@
         var requestOptions = {
             url: url,
             type: type,
-            //dataType: 'jsonp',
+            //dataType: "application/x-www-form-urlencoded",
             data: data,
+            //ContentType: "text/json",
             success: function resolveDeferred(requestData) {
                 deferred.resolve(requestData);
             },
@@ -33,7 +34,7 @@
     }
 
     function makePostRequest(url, data, content) {
-        return makeRequest(url, "post", data, content);
+        return makeRequest(url, "POST", data, content);
     }
 
     return {
