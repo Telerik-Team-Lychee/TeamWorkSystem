@@ -51,6 +51,13 @@
                     file.run();
                 });
             });
+
+            this.get("#/teamwork/:id", function () {
+                var teamworkId = this.params['id'];
+                require([appConfig.controllersPath + "teamworkController"], function (file) {
+                    file.run(teamworkId);
+                });
+            });
         });
 
         app.run("#/");

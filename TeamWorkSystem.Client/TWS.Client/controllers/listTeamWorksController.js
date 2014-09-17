@@ -1,5 +1,5 @@
 define(["jquery", "modules", "appConfig"], function ($, modules, appConfig) {
-    var url = modules.config.apiURL + "api/teamworks/" ;
+    var url = modules.config.apiURL + "api/teamwork/" ;
 
     function run() {
         url = url + "all";
@@ -7,10 +7,7 @@ define(["jquery", "modules", "appConfig"], function ($, modules, appConfig) {
        .then(function () {
            modules.request.get(url)
            .then(function (requestData) {
-               $("#teamworks").loadTemplate(requestData.reverse())
-               //TODO:
-               //$("#categories").loadTemplate()
-               //$("#archive-teamworks").loadTemplate()
+               $("#teamworks").loadTemplate([requestData.reverse()])
            })
                .then(addEvents());
            });
@@ -22,10 +19,10 @@ define(["jquery", "modules", "appConfig"], function ($, modules, appConfig) {
             var self = $(this);
 
             var id = self.attr('id');
-            console.log(id);
-            require([appConfig.controllersPath + "teamworkController"], function (file) {
-                file.run(id);
-            })
+            //console.log(id);
+            //require([appConfig.controllersPath + "teamworkController"], function (file) {
+            //    file.run(id);
+            //})
             modules.redirect("#/teamwork/" + id);
         });
     }
