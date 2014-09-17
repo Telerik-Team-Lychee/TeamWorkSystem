@@ -8,6 +8,7 @@ namespace TWS.RestApi
 
     using Microsoft.Owin.Security.OAuth;
     using Newtonsoft.Json.Serialization;
+    using System.Web.Http.Cors;
 
     public static class WebApiConfig
     {
@@ -17,7 +18,8 @@ namespace TWS.RestApi
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-            config.EnableCors();
+            var corsAttr = new EnableCorsAttribute("*","*","*");
+            config.EnableCors(corsAttr);
 
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -28,7 +30,7 @@ namespace TWS.RestApi
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            config.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.None;
+            config.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.All;
             config.Formatters.Remove(config.Formatters.XmlFormatter);
         }
     }
