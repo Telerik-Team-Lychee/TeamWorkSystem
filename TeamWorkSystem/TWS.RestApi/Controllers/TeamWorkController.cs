@@ -37,11 +37,7 @@
         [HttpGet]
         public IHttpActionResult ById(int id)
         {
-            var teamwork = this.data
-                .TeamWorks
-                .All()
-                .FirstOrDefault(t => t.Id == id);
-
+            var teamwork = this.GetCurrentTeamwork(id);
             if (teamwork == null)
             {
                 return BadRequest("Teamwork does not exist - invalid id");
@@ -70,11 +66,7 @@
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
-            var existingTeamwork = this.data
-                .TeamWorks
-                .All()
-                .FirstOrDefault(t => t.Id == id);
-
+            var existingTeamwork = this.GetCurrentTeamwork(id);
             if (existingTeamwork == null)
             {
                 return BadRequest("Teamwork does not exist - invalid id");
@@ -84,6 +76,11 @@
             this.data.SaveChanges();
 
             return Ok();
+        }
+
+        private TeamWork GetCurrentTeamwork(int id)
+        {
+            return this.data.TeamWorks.Find(id);
         }
     }
 }
