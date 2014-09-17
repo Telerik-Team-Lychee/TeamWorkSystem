@@ -1,4 +1,4 @@
-﻿define(["jquery", "Q"], function ($, Q) {
+﻿define(["jquery", "Q", "modules"], function ($, Q, modules) {
     function makeRequest(url, type, data, content) {
         var deferred = Q.defer();
 
@@ -7,7 +7,11 @@
             type: type,
             //dataType: "application/x-www-form-urlencoded",
             data: data,
-            //ContentType: "text/json",
+            beforeSend: function (xhr) {
+                var token = JSON.parse(localStorage.getItem("token"));
+
+                xhr.setRequestHeader("Authorization", "Bearer " + token);
+            },
             success: function resolveDeferred(requestData) {
                 deferred.resolve(requestData);
             },
@@ -23,7 +27,7 @@
         {
             requestOptions.contentType = content;
         }
-
+        
         $.ajax(requestOptions);
 
         return deferred.promise;

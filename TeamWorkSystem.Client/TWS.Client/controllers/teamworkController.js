@@ -1,14 +1,24 @@
 ﻿define(["jquery", "modules"], function ($, modules) {
-    var url = modules.config.apiURL + "api/teamworks/";
+    var url = modules.config.apiURL + "api/TeamWork/ById/";
 
     function run(id) {
-        url = url + id;
         modules.view.load("teamwork")
        .then(function () {
-           modules.request.get(url)
+           modules.request.get(url + id)
            .then(function (requestData) {
-               $("#single-teamwork").loadTemplate(requestData);
+               $("#single-teamwork").loadTemplate([requestData]);
+           }, function () {
+               modules.redirect("#/teamwork/" + id);
            });
+
+           modules.request.get(modules.config.apiURL + "api/assignment/ByTeamwork/" + id)
+           .then(function (requestData) {
+               console.log(requestData);
+               $("#assignments").loadTemplate(requestData);
+           }, function () {
+               modules.redirect("#/teamwork/" + id);
+           });
+
        });
     }
 

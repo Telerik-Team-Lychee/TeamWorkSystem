@@ -2,6 +2,10 @@
     <div id="single-teamwork" data-template="single-teamwork-template">
     </div>
 </div>
+<div class="col-lg-4">
+    <div id="assignments" data-template="assignment-teamwork-template">
+    </div>
+</div>
 
 <script id="single-teamwork-template" type="text/x-mustache-template">
     <h1>{{{Name}}}</h1>
@@ -11,5 +15,9 @@
     <div id="assignments"></div>
     <p id="description">{{{Description}}}</p>
     <a href="{{{GitHubLink}}}">GitHub Repository</a>
+</script>
 
+<script id="assignment-teamwork-template" type="text/x-mustache-template">
+    <h1>{{{Name}}}</h1>
+    <h4>{{{Description}}}</h4>
 </script>

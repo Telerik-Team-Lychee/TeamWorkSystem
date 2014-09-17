@@ -5,10 +5,12 @@ namespace TWS.RestApi
     using System.Linq;
     using System.Net.Http;
     using System.Web.Http;
+    using System.Web.Http.Cors;
+    using System.Web.OData.Extensions;
 
     using Microsoft.Owin.Security.OAuth;
+
     using Newtonsoft.Json.Serialization;
-    using System.Web.Http.Cors;
 
     public static class WebApiConfig
     {
@@ -23,6 +25,7 @@ namespace TWS.RestApi
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+            config.AddODataQueryFilter();
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
@@ -30,7 +33,7 @@ namespace TWS.RestApi
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            config.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.All;
+            config.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.None;
             config.Formatters.Remove(config.Formatters.XmlFormatter);
         }
     }

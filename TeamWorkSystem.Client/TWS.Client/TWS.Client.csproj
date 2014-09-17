@@ -66,11 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.js" />
+    <Content Include="controllers\listTeamWorksController.js" />
     <Content Include="controllers\loginController.js" />
     <Content Include="controllers\registerController.js" />
-    <Content Include="..\..\..\listTeamWorksController.js">
-      <Link>controllers\listTeamWorksController.js</Link>
-    </Content>
     <Content Include="controllers\teamworkController.js" />
     <Content Include="index.html" />
     <Content Include="modules\requester.js" />

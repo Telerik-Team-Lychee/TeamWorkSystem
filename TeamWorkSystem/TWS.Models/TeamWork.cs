@@ -40,7 +40,6 @@
 		[Required]
 		public string GitHubLink { get; set; }
 
-		[Required]
 		public DateTime StartDate { get; set; }
 
 		[Required]

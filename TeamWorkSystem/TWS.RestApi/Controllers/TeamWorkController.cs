@@ -9,8 +9,9 @@
     using Microsoft.AspNet.Identity;
 
     using TWS.Data;
-    using TWS.RestApi.Infrastructure;
     using TWS.Models;
+    using TWS.RestApi.Infrastructure;
+    using TWS.RestApi.Models;
 
     public class TeamWorkController : BaseApiController
     {
@@ -28,16 +29,20 @@
         }
 
         [HttpGet]
-        public IHttpActionResult All()
+        public IQueryable<TeamworkModel> All()
         {
-            var teamworks = this.data.TeamWorks.All();
-            return Ok(teamworks);
+            var teamworks = this.data
+                .TeamWorks
+                .All()
+                .Select(TeamworkModel.FromTeamwork);
+
+            return teamworks;
         }
 
         [HttpGet]
         public IHttpActionResult ById(int id)
         {
-            var teamwork = this.GetCurrentTeamwork(id);
+            var teamwork = this.GetCurrentTeamworkModel(id);
             if (teamwork == null)
             {
                 return BadRequest("Teamwork does not exist - invalid id");
@@ -47,7 +52,7 @@
         }
 
         [HttpPost]
-        public IHttpActionResult Create(TeamWork teamWork)
+        public IHttpActionResult Create(TeamworkModel teamWork)
         {
             if (!this.ModelState.IsValid)
             {
@@ -56,17 +61,27 @@
 
             var currentUserId = this.userIdProvider.GetUserId();
 
-            teamWork.Users.Add(new UsersTeamWorks() { Id = currentUserId, IsAdmin = true });
-            this.data.TeamWorks.Add(teamWork);
+            var newTeamwork = new TeamWork()
+            {
+                Name = teamWork.Name,
+                Description = teamWork.Description,
+                GitHubLink = teamWork.GitHubLink,
+                EndDate = teamWork.EndDate,
+                Category = teamWork.Category
+            };
+
+            newTeamwork.Users.Add(new UsersTeamWorks() { Id = currentUserId, IsAdmin = true });
+            this.data.TeamWorks.Add(newTeamwork);
             this.data.SaveChanges();
 
+            teamWork.Id = newTeamwork.Id;
             return Ok(teamWork);
         }
 
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
-            var existingTeamwork = this.GetCurrentTeamwork(id);
+            var existingTeamwork = this.data.TeamWorks.Find(id);
             if (existingTeamwork == null)
             {
                 return BadRequest("Teamwork does not exist - invalid id");
@@ -78,9 +93,13 @@
             return Ok();
         }
 
-        private TeamWork GetCurrentTeamwork(int id)
+        private TeamworkModel GetCurrentTeamworkModel(int id)
         {
-            return this.data.TeamWorks.Find(id);
+            return this.data.TeamWorks
+                .All()
+                .Where(t => t.Id == id)
+                .Select(TeamworkModel.FromTeamwork)
+                .FirstOrDefault();
         }
     }
 }
