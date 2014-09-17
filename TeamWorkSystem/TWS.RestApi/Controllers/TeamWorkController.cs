@@ -17,11 +17,6 @@
     {
         private IUserIdProvider userIdProvider;
 
-        public TeamWorkController()
-            : this(new TwsData(), new AspNetUserIdProvider())
-        {
-        }
-
         public TeamWorkController(ITwsData data, IUserIdProvider userIdProvider)
             : base(data)
         {

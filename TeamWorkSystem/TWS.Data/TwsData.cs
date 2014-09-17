@@ -12,11 +12,6 @@
         private DbContext context;
         private IDictionary<Type, object> repositories;
 
-        public TwsData()
-            : this(new TwsDbContext())
-        {
-        }
-
         public TwsData(DbContext context)
         {
             this.context = context;
