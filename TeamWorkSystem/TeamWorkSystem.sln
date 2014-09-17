@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWS.Models", "TWS.Models\TWS.Models.csproj", "{DC044A84-0E26-4670-8358-3B46D6A660D3}"
 EndProject
@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{AA2B67
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWS.Tests", "TWS.Tests\TWS.Tests.csproj", "{A47DAF8A-C75C-40B6-AF56-460EDDA58299}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +36,10 @@ Global
 		{9A8240B4-000D-4BB4-B120-5A739D14D0FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A8240B4-000D-4BB4-B120-5A739D14D0FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A8240B4-000D-4BB4-B120-5A739D14D0FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A47DAF8A-C75C-40B6-AF56-460EDDA58299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A47DAF8A-C75C-40B6-AF56-460EDDA58299}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A47DAF8A-C75C-40B6-AF56-460EDDA58299}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A47DAF8A-C75C-40B6-AF56-460EDDA58299}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
