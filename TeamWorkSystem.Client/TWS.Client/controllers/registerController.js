@@ -20,12 +20,16 @@
 
             addMessage();
         });
+
+
     }
 
     function addMessage() {
-        modules.request.post(url, JSON.stringify(userInfo))
+        var data = "Email=" + userInfo['Email'] + "&Password=" + userInfo['Password'] + "&ConfirmPassword=" + userInfo['ConfirmPassword'];
+
+        modules.request.post(url, data, "application/x-www-form-urlencoded")
         .then(function () {
-            modules.redirect("#/");
+            modules.redirect("#/login");
         });
     }
 

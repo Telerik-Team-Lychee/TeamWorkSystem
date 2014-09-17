@@ -20,9 +20,11 @@
     using TWS.RestApi.Providers;
     using TWS.RestApi.Results;
     using TWS.Models;
+    using System.Web.Http.Cors;
 
     [Authorize]
     [RoutePrefix("api/Account")]
+    [EnableCors("*", "*", "*")]
     public class AccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";
@@ -323,6 +325,7 @@
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
+        [EnableCors("*", "*", "*")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
         {
             if (!ModelState.IsValid)
