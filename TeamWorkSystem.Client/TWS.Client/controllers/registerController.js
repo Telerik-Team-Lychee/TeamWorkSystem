@@ -1,6 +1,6 @@
 ﻿define(["jquery", "modules"], function ($, modules) {
     var userInfo = {},
-        url = modules.config.apiURL + "Account/Register";
+        url = modules.config.apiURL + "api/Account/Register";
 
     function run() {
         modules.view.load("register")
