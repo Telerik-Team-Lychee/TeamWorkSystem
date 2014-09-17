@@ -1,5 +1,5 @@
 ﻿define(["jquery", "modules"], function ($, modules) {
-    var url = modules.config.apiURL + "/teamworks/all" ;
+    var url = modules.config.apiURL + "api/teamworks/all" ;
 
     function run() {
         modules.view.load("listTeamworks")

@@ -25,12 +25,13 @@
         var app = sammy("#mainContent", function () {
 
             this.get("#/", function () {
-                if (modules.storager.get("user") !== null) {
-                    require([appConfig.controllersPath + "listTeamWorksController"], function (file) {
-                        file.run();
-                    });
-                }
+                //if (modules.storager.get("user") !== null) {
+                    
+                //}
                 
+                require([appConfig.controllersPath + "listTeamWorksController"], function (file) {
+                    file.run();
+                });
             });
 
             this.get("#/register", function () {
@@ -44,13 +45,6 @@
                     file.run();
                 });
             });
-
-            this.get("#/viewValues", function () {
-                require([appConfig.controllersPath + "valuesController"], function (file) {
-                    file.run();
-                });
-            });
-
         });
 
         app.run("#/");
