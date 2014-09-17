@@ -25,10 +25,6 @@
         var app = sammy("#mainContent", function () {
 
             this.get("#/", function () {
-                //if (modules.storager.get("user") !== null) {
-                    
-                //}
-                
                 require([appConfig.controllersPath + "listTeamWorksController"], function (file) {
                     file.run();
                 });
@@ -46,11 +42,11 @@
                 });
             });
 
-            this.get("#/teamworks", function () {
-                require([appConfig.controllersPath + "listTeamWorksController"], function (file) {
-                    file.run();
-                });
-            });
+            //this.get("#/teamworks", function () {
+            //    require([appConfig.controllersPath + "listTeamWorksController"], function (file) {
+            //        file.run();
+            //    });
+            //});
 
             this.get("#/teamwork/:id", function () {
                 var teamworkId = this.params['id'];

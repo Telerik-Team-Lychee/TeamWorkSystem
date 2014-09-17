@@ -9,24 +9,14 @@
         <ul id="teamworks" data-template="teamwork-template" class="list-group"></ul>
         <!--<ul><li id="2">Some teamwork</li></ul>-->
     </div>
-    <div class="teamwork-box">
-        <h3>Archive</h3>
-        <ul id="archive-teamworks" data-template="archive-teamwork-template" class="list-group"></ul>
-    </div>
 </div>
 
 <script id="teamwork-template" type="text/x-mustache-template">
-    <li id="{{id}}" class="list-group-item">
+    <li id="{{Id}}" class="list-group-item">
         <span>{{{Name}}}</span>
         <span>{{{Category}}}</span>
-        <span><a href="">{{{Join}}}</a></span>
-    </li>
-</script>
-
-<script id="archive-teamwork-template" type="text/x-mustache-template">
-    <li id="{{id}}" class="list-group-item">
-        <span>{{{Name}}}</span>
-        <span>{{{Category}}}</span>
+        <span>{{{Description}}}</span>
+        <span><a href="#/request/{Id}">Join This Teamwork</a></span>
     </li>
 </script>
 
