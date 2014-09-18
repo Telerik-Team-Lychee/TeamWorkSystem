@@ -1,6 +1,6 @@
 ﻿<div class="col-lg-8">
     <h1>Add New Teamwork</h1>
-    <form class="form-horizontal" method="POST">
+    <form action="" class="form-horizontal" method="POST">
         <fieldset>
             <div class="col-lg-10">
                 <!-- Text input-->
@@ -23,7 +23,6 @@
                     <label class="control-label" for="GitHubLink">Repository</label>
                     <div class="controls">
                         <input id="GitHubLink" name="GitHubLink" type="text" placeholder="Enter repository link..." class="form-control">
-
                     </div>
                 </div>
 
@@ -31,7 +30,7 @@
                 <div class="control-group">
                     <label class="control-label" for="Category">Select Category</label>
                     <div class="controls">
-                        <select id="Category" name="Category" class="form-control" data-template="category-template"></select>
+                        <select id="CategoriesSelect" name="Category" class="form-control" data-template="category-template"></select>
                     </div>
                 </div>
 
@@ -40,7 +39,6 @@
                     <label class="control-label" for="EndDate">End Date</label>
                     <div class="controls">
                         <input id="EndDate" name="EndDate" type="text" placeholder="mm-dd-yyyy" class="form-control">
-
                     </div>
                 </div>
 
@@ -48,7 +46,7 @@
                 <div class="control-group">
                     <label class="control-label" for="create-teamwork"></label>
                     <div class="controls">
-                        <button class="btn btn-default" id="create-teamwork">Create</button>
+                        <button type="submit" class="btn btn-default" id="create-teamwork">Create</button>
                     </div>
                 </div>
             </div>
@@ -57,7 +55,7 @@
 </div>
 
 <script id="category-template" type="text/x-mustache-template">
-    <option id="{{id}}" class="list-group-item">
-        {{{Name}}}
+    <option value="{{.}}" class="list-group-item">
+        {{{.}}}
     </option>
 </script>

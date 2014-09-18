@@ -4,21 +4,21 @@
 
     function run() {
         modules.view.load("newTeamwork")
-        
-        modules.request.get(modules.config.apiURL + "categories/all")
+        modules.request.get(modules.config.apiURL + "TeamWork/GetCategories")
         .then(function (requestData) {
-        if (requestData.length < 2) {
-            $("#categories").loadTemplate([requestData])
-        }
-        else {
-            $("#categories").loadTemplate(requestData)
-        }
-})
-            .then(addEvents())       
+            if (requestData.length < 2) {
+                $("#CategoriesSelect").loadTemplate([requestData])
+            }
+            else {
+                $("#CategoriesSelect").loadTemplate(requestData)
+            }
+
+            addEvents();
+        });
     }
 
     function addEvents() {
-        $("#mainContent").on("click", "#create-teamwork", function (event) {
+        $("form").on("submit", function (event) {
             event.preventDefault();
             var self = $(this);
 
@@ -31,13 +31,17 @@
     }
 
     function addmessage() {
-        var data = "Name=" + teamworkInfo['Name'] + "&Description=" + teamworkInfo['Description'] + "&GitHubLink=" + teamworkInfo['GitHubLink']
-        + "&Category" + teamworkInfo['Category'] + "&EndDate=" + teamworkInfo['EndDate'];
-            
+        var data =
+            "Name=" + teamworkInfo['Name'] +
+            "&Description=" + teamworkInfo['Description'] +
+            "&GitHubLink=" + teamworkInfo['GitHubLink'] +
+            "&Category=" + teamworkInfo['Category'] +
+            "&EndDate=" + teamworkInfo['EndDate'];
+
         modules.request.post(url, data, "application/x-www-form-urlencoded")
         .then(function (requestData) {
-            var id = requestData.id;
-            modules.redirect("#/teamworks/" + id);
+            var id = requestData.Id;
+            modules.redirect("#/teamwork/" + id);
         });
     }
 
