@@ -24,7 +24,7 @@
 
     [Authorize]
     [RoutePrefix("api/Account")]
-    [EnableCors("*", "*", "*")]
+    //[EnableCors("*", "*", "*", SupportsCredentials=true)]
     public class AccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";
@@ -325,7 +325,7 @@
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
-        [EnableCors("*", "*", "*")]
+        //[EnableCors("*", "*", "*")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
         {
             if (!ModelState.IsValid)

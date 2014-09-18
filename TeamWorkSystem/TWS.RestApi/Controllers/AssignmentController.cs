@@ -11,7 +11,7 @@
 	using TWS.RestApi.Infrastructure;
     using TWS.RestApi.Models;
 
-	[EnableCors("*", "*", "*")]
+	//[EnableCors("*", "*", "*")]
 	public class AssignmentController : BaseApiController
 	{
 		private IUserIdProvider userIdProvider;

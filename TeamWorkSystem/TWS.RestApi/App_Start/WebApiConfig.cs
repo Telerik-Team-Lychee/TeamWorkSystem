@@ -14,9 +14,7 @@ namespace TWS.RestApi
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-            var corsAttr = new EnableCorsAttribute("*","*","*");
-            config.EnableCors(corsAttr);
-
+            
             // Web API routes
             config.MapHttpAttributeRoutes();
             config.AddODataQueryFilter();
@@ -29,6 +27,11 @@ namespace TWS.RestApi
 
             config.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.None;
             config.Formatters.Remove(config.Formatters.XmlFormatter);
+
+            //var corsAttr = new EnableCorsAttribute("*", "*", "*");
+            //config.EnableCors(corsAttr);
+
+            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
         }
     }
 }

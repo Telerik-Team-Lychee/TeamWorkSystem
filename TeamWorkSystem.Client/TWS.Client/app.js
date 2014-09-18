@@ -25,9 +25,24 @@
         var app = sammy("#mainContent", function () {
 
             this.get("#/", function () {
+
+                if(JSON.parse(localStorage.getItem("token")) !== null) {
+                    $("a.logIn").hide();
+                    $("a.register").hide();
+                    $("a.logout").show();
+                }
+
                 require([appConfig.controllersPath + "listTeamWorksController"], function (file) {
                     file.run();
                 });
+            });
+
+            this.get("#/logout", function () {
+                localStorage.removeItem("token");
+                $("a.logIn").show();
+                $("a.register").show();
+                $("a.logout").hide();
+                window.location.hash = "#/";
             });
 
             this.get("#/register", function () {

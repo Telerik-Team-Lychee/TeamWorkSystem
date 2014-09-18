@@ -17,35 +17,13 @@ namespace TWS.Data.Migrations
 
         protected override void Seed(TwsDbContext context)
         {
-            if (context.UsersTeamworks.Any())
+            if (context.TeamWorks.Any())
             {
                 return;
             }
 
-            this.SeedUsers(context);
             this.SeedTeamworks(context);
             this.SeedAssignments(context);
-            this.SeedMessages(context);
-        }
-
-        private void SeedUsers(TwsDbContext context)
-        {
-            for (int i = 1; i <= 6; i++)
-            {
-                string email = "user" + i + "@asd.bg";
-                context.Users.AddOrUpdate(
-                    new User
-                    {
-                        Email = email,
-                        UserName = email,
-                        FirstName = "Gosho " + i,
-                        LastName = "Peshov " + i,
-                        PasswordHash = "asd".GetHashCode().ToString()
-                    });
-
-            }
-
-            context.SaveChanges();
         }
 
         private void SeedTeamworks(TwsDbContext context)
@@ -79,22 +57,6 @@ namespace TWS.Data.Migrations
                        Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
                        Priority = i,
                        TeamWork = teamwork,
-                    });
-            }
-
-            context.SaveChanges();
-        }
-
-        private void SeedMessages(TwsDbContext context)
-        {
-            for (int i = 1; i <= 6; i++)
-            {
-                context.Messages.AddOrUpdate(
-                    new Message
-                    {
-                        Text = "Some text" + i,
-                        SentBy = context.Users.First(),
-                        TeamWork = context.TeamWorks.First()
                     });
             }
 
