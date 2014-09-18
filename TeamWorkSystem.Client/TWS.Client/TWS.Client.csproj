@@ -70,6 +70,7 @@
     <Content Include="controllers\listTeamWorksController.js" />
     <Content Include="controllers\loginController.js" />
     <Content Include="controllers\messageController.js" />
+    <Content Include="controllers\newAssignmentController.js" />
     <Content Include="controllers\newMessageController.js" />
     <Content Include="controllers\newTeamworkController.js" />
     <Content Include="controllers\registerController.js" />
@@ -93,6 +94,7 @@
     <Content Include="views\listMessages.html" />
     <Content Include="views\login.html" />
     <Content Include="views\message.html" />
+    <Content Include="views\newAssignment.html" />
     <Content Include="views\newMessage.html" />
     <Content Include="views\newTeamwork.html" />
     <Content Include="views\register.html" />
