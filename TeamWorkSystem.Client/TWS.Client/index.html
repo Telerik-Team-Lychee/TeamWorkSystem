@@ -13,7 +13,7 @@
             <div class="navbar navbar-default">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#/">Home</a>
+                        <a href="#/" title="Home">Home</a>
                     </li>
                     <!--<li>
                         <a href="#/teamworks">View Teamworks</a>
@@ -27,6 +27,16 @@
                         </ul>
                     </li>-->
                     <li>
+                        <a href="#/messages" title="View Messages">Messages</a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="#/newmessage">Create new</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
                         <a href="#/login" class="not-logged-in">Log In</a>
                     </li>
                     <li>
@@ -39,10 +49,21 @@
             </div>
         </header>
 
-        <section id="mainContent" class="row">
-        </section>
-    </main>
+        <section class="row">
+            <div class="container" id="mainContent">
 
+            </div>
+        </section>
+        <footer>
+            <div class="row">
+                <div class="col-lg-8">
+                    <p>
+                        Team Lychee - Telerik Academy 2014
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </main>
     <script src="scripts/libs/require.js" data-main="app"></script>
 </body>
 </html>
