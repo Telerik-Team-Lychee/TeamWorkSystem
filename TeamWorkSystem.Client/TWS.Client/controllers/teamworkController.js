@@ -1,5 +1,5 @@
 ﻿define(["jquery", "modules"], function ($, modules) {
-    var url = modules.config.apiURL + "api/TeamWork/ById/";
+    var url = modules.config.apiURL + "TeamWork/ById/";
 
     function run(id) {
         modules.view.load("teamwork")
@@ -11,7 +11,7 @@
                modules.redirect("#/teamwork/" + id);
            });
 
-           modules.request.get(modules.config.apiURL + "api/assignment/ByTeamwork/" + id)
+           modules.request.get(modules.config.apiURL + "assignment/ByTeamwork/" + id)
            .then(function (requestData) {
                console.log(requestData);
                $("#assignments").loadTemplate(requestData);

@@ -1,5 +1,5 @@
 define(["jquery", "modules", "appConfig"], function ($, modules, appConfig) {
-    var url = modules.config.apiURL + "api/teamwork/all" ;
+    var url = modules.config.apiURL + "teamwork/all" ;
 
     function run() {
         modules.view.load("listTeamworks")
@@ -14,7 +14,7 @@ define(["jquery", "modules", "appConfig"], function ($, modules, appConfig) {
               }
           });
 
-           modules.request.get(modules.config.apiURL + "api/categories/all")
+           modules.request.get(modules.config.apiURL + "categories/all")
           .then(function (requestData) {
               if (requestData.length < 2) {
                   $("#categories").loadTemplate([requestData])
