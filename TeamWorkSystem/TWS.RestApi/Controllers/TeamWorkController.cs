@@ -151,7 +151,7 @@
 				Description = teamWork.Description,
 				GitHubLink = teamWork.GitHubLink,
 				EndDate = teamWork.EndDate,
-				Category = teamWork.Category
+				Category = (Category)Enum.Parse(typeof(Category), teamWork.Category)
 			};
 
 			newTeamwork.Users.Add(new UsersTeamWorks() { Id = currentUserId, IsAdmin = true });

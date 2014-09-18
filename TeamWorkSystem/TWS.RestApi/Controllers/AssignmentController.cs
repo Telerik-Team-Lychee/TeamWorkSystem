@@ -1,12 +1,15 @@
 ﻿namespace TWS.RestApi.Controllers
 {
-	using System.Linq;
-	using System.Web.Http;
-	using System.Web.Http.Cors;
+    using System;
+    using System.Linq;
+    using System.Web.Http;
+    using System.Web.Http.Cors;
 
-	using TWS.Data;
-	using TWS.Models;
-	using TWS.RestApi.Infrastructure;
+    using TWS.Data;
+    using TWS.Models;
+    using TWS.Models.Enumerations;
+    using TWS.RestApi.Infrastructure;
+    using TWS.RestApi.Models;
 
 	[EnableCors("*", "*", "*")]
 	public class AssignmentController : BaseApiController
@@ -32,12 +35,16 @@
 				return BadRequest("Teamwork does not exist - invalid id");
 			}
 
-			var assignments = existingTeamwork.Assignments;
+            var assignments = existingTeamwork
+                .Assignments
+                .AsQueryable()
+                .Select(AssignmentModel.FromAssignment);
+
 			return Ok(assignments);
 		}
 
 		[HttpPost]
-		public IHttpActionResult Create(int id, Assignment assignment)
+		public IHttpActionResult Create(int id, AssignmentModel assignment)
 		{
 			if (!this.ModelState.IsValid)
 			{
@@ -50,14 +57,22 @@
 				return BadRequest("Teamwork does not exist - invalid id");
 			}
 
-			this.data.Assignments.Add(assignment);
+            var newAssignment = new Assignment
+            {
+                Name = assignment.Name,
+                Description = assignment.Description,
+                Priority = assignment.Priority
+            };
+
+            this.data.Assignments.Add(newAssignment);
 			this.data.SaveChanges();
 
+            assignment.Id = newAssignment.Id;
 			return Ok(assignment);
 		}
 
 		[HttpPut]
-		public IHttpActionResult Put(int id, Assignment assignment)
+		public IHttpActionResult Put(int id, AssignmentModel assignment)
 		{
 			if (!this.ModelState.IsValid)
 			{
@@ -70,10 +85,18 @@
 				return BadRequest("Assignment does not exist.");
 			}
 
-			existingAssignment = assignment;
+            var newAssignment = new Assignment
+            {
+                Name = assignment.Name,
+                Description = assignment.Description,
+                Priority = assignment.Priority,
+                Status = (AssignmentStatus)Enum.Parse(typeof(AssignmentStatus), assignment.Status)
+            };
+
+            existingAssignment = newAssignment;
 			this.data.SaveChanges();
 
-			return Ok(existingAssignment);
+			return Ok();
 		}
 
 		[HttpDelete]

@@ -21,7 +21,7 @@
 					Description = t.Description,
 					GitHubLink = t.GitHubLink,
 					EndDate = t.EndDate,
-					Category = t.Category
+					Category = t.Category.ToString()
 				};
 			}
 		}
@@ -41,11 +41,13 @@
 		[Required]
 		public string GitHubLink { get; set; }
 
+        public DateTime StartDate { get; set; }
+
 		[Required]
 		public DateTime EndDate { get; set; }
 
 		[Required]
-		public Category Category { get; set; }
+		public string Category { get; set; }
 
         private bool IsActive
         {
