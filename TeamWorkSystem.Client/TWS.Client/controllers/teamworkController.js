@@ -16,7 +16,7 @@
 
            modules.request.get(modules.config.apiURL + "Message/All/" + id)
            .then(function (requestData) {
-               console.log(requestData);
+              // console.log(requestData);
               $("#messages").loadTemplate(requestData);
            });
 
