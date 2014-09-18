@@ -24,6 +24,8 @@
 
 		public IDbSet<TeamWorkRequest> TeamWorkRequests { get; set; }
 
+        public IDbSet<UsersTeamWorks> UsersTeamworks { get; set; }
+
 		public static TwsDbContext Create()
 		{
 			return new TwsDbContext();
