@@ -5,7 +5,7 @@
     function run() {
         modules.view.load("newTeamwork")
         
-        modules.request.get(modules.config.apiURL + "categories/all")
+        modules.request.get(modules.config.apiURL + "teamwork/GetCategories")
         .then(function (requestData) {
         if (requestData.length < 2) {
             $("#categories").loadTemplate([requestData])

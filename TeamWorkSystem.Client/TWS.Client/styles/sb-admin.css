@@ -133,6 +133,12 @@ body {
     margin-top: 10px;
 }
 
+.span-category {
+    right:10px;
+    position: absolute;
+    font-size: 0.8em;
+}
+
 #new-teamwork {
     right:10px;
     top:20px;
