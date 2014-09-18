@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Web;
-using TWS.Models;
-
-namespace TWS.RestApi.Models
+﻿namespace TWS.RestApi.Models
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq.Expressions;
+
+    using TWS.Models;
+
     public class MessageModel
     {
         public static Expression<Func<Message, MessageModel>> FromMessage
@@ -20,7 +18,7 @@ namespace TWS.RestApi.Models
                     Text = m.Text,
                     PostDate = m.PostDate,
                     TeamWorkId = m.TeamWorkId,
-                    SentBy = m.SentBy
+                    SentById = m.SentById
                 };
             }
         }
@@ -35,6 +33,6 @@ namespace TWS.RestApi.Models
 
         public int TeamWorkId { get; set; }
 
-        public User SentBy { get; set; }
+        public string SentById { get; set; }
     }
 }

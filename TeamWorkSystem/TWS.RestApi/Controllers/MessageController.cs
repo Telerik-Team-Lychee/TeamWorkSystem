@@ -31,7 +31,7 @@
 				Text = messageModel.Text,
 				PostDate = messageModel.PostDate,
 				TeamWorkId = messageModel.TeamWorkId,
-				SentBy = messageModel.SentBy
+				SentBy = messageModel.SentById
 
 			};
 			this.data.Messages.Add(newMessage);
@@ -45,7 +45,11 @@
 		[HttpGet]
 		public IQueryable<MessageModel> All(int id)
 		{
-			var messages = this.data.Messages.All().Select(MessageModel.FromMessage).Where(m => m.TeamWorkId == id);
+            var messages = this.data
+                .Messages
+                .All()
+                .Where(m => m.TeamWorkId == id)
+                .Select(MessageModel.FromMessage);
 
 			return messages;
 		}
