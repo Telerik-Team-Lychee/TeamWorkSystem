@@ -10,11 +10,12 @@
 
 	public class MessageController : BaseApiController
 	{
-		private IUserIdProvider userIDProvider;
+		private IUserIdProvider userIdProvider;
+
 		public MessageController(ITwsData data, IUserIdProvider userIdProvider)
 			: base(data)
 		{
-			this.userIDProvider = userIdProvider;
+			this.userIdProvider = userIdProvider;
 		}
 
 		[HttpPost]
@@ -25,15 +26,18 @@
 				return BadRequest(this.ModelState);
 			}
 
+            var currentUserId = this.userIdProvider.GetUserId();
+
 			var newMessage = new Message()
 			{
 				Id = messageModel.Id,
 				Text = messageModel.Text,
 				PostDate = messageModel.PostDate,
 				TeamWorkId = messageModel.TeamWorkId,
-				SentById = messageModel.SentById
+                SentById = currentUserId
 
 			};
+
 			this.data.Messages.Add(newMessage);
 			this.data.SaveChanges();
 
