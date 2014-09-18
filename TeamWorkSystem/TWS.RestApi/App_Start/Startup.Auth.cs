@@ -16,14 +16,14 @@
     using TWS.Data;
     using System.Web.Http.Cors;
 
-    [EnableCors("*", "*", "*")]
+    //[EnableCors("*", "*", "*")]
     public partial class Startup
     {
         public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }
 
         public static string PublicClientId { get; private set; }
 
-        [EnableCors("*", "*", "*")]
+        //[EnableCors("*", "*", "*")]
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {

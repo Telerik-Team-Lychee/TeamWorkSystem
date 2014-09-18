@@ -14,7 +14,9 @@
 
     using TWS.RestApi.Models;
     using TWS.Models;
+    using System.Web.Http.Cors;
 
+    [EnableCors("*", "*", "*", SupportsCredentials = true)]
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {
         private readonly string _publicClientId;
@@ -31,7 +33,7 @@
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] {"*"});
+            //context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] {"*"});
             var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
 
             User user = await userManager.FindAsync(context.UserName, context.Password);
@@ -55,6 +57,7 @@
 
         public override Task TokenEndpoint(OAuthTokenEndpointContext context)
         {
+            //context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
             foreach (KeyValuePair<string, string> property in context.Properties.Dictionary)
             {
                 context.AdditionalResponseParameters.Add(property.Key, property.Value);

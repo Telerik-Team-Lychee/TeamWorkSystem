@@ -17,7 +17,7 @@ namespace TWS.Data.Migrations
 
         protected override void Seed(TwsDbContext context)
         {
-            if (context.UsersTeamworks.Any())
+            if (context.TeamWorks.Any())
             {
                 return;
             }
