@@ -6,12 +6,12 @@
         modules.view.load("newTeamwork")
         modules.request.get(modules.config.apiURL + "TeamWork/GetCategories")
         .then(function (requestData) {
-            if (requestData.length < 2) {
+        if (requestData.length < 2) {
                 $("#CategoriesSelect").loadTemplate([requestData])
-            }
-            else {
+        }
+        else {
                 $("#CategoriesSelect").loadTemplate(requestData)
-            }
+        }
 
             addEvents();
         });
@@ -37,7 +37,7 @@
             "&GitHubLink=" + teamworkInfo['GitHubLink'] +
             "&Category=" + teamworkInfo['Category'] +
             "&EndDate=" + teamworkInfo['EndDate'];
-
+            
         modules.request.post(url, data, "application/x-www-form-urlencoded")
         .then(function (requestData) {
             var id = requestData.Id;
