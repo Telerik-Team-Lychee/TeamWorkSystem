@@ -12,6 +12,7 @@
 	using TWS.Models;
 	using TWS.RestApi.Infrastructure;
 	using TWS.RestApi.Models;
+    using TWS.Models.Enumerations;
 
 	public class TeamWorkController : BaseApiController
 	{
@@ -24,14 +25,14 @@
 		}
 
 		[HttpGet]
-		public IQueryable<TeamworkModel> All()
+		public IHttpActionResult All()
 		{
 			var teamworks = this.data
 				.TeamWorks
 				.All()
 				.Select(TeamworkModel.FromTeamwork);
 
-			return teamworks;
+			return Ok(teamworks);
 		}
 
 		[HttpGet]
@@ -45,6 +46,16 @@
 
 			return Ok(teamwork);
 		}
+
+        /// <summary>
+        /// Get all values in the Category enumeration
+        /// </summary>
+        /// <returns>The enum Category's values</returns>
+        [HttpGet]
+        public IHttpActionResult GetCategories()
+        {
+            return Ok(Enum.GetNames(typeof(Category)));
+        }
 
 		/// <summary>
 		/// Get all users that participate in the current teamwork

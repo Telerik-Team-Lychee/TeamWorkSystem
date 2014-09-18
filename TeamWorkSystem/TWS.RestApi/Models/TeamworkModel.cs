@@ -17,24 +17,16 @@
 				return t => new TeamworkModel
 				{
 					Id = t.Id,
+                    Name = t.Name,
 					Description = t.Description,
 					GitHubLink = t.GitHubLink,
 					EndDate = t.EndDate,
-					Category = t.Category,
-					IsActive = t.
+					Category = t.Category
 				};
 			}
 		}
 
-		private bool IsActive
-		{
-			get
-			{
-				return DateTime.Now > this.EndDate;
-			}
-		}
-
-		public int Id { get; set; }
+        public int Id { get; set; }
 
 		[Required]
 		[MinLength(2)]
@@ -54,5 +46,13 @@
 
 		[Required]
 		public Category Category { get; set; }
+
+        private bool IsActive
+        {
+            get
+            {
+                return DateTime.Now < this.EndDate;
+            }
+        }
 	}
 }
