@@ -66,11 +66,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.js" />
+    <Content Include="controllers\listMessagesController.js" />
     <Content Include="controllers\listTeamWorksController.js" />
     <Content Include="controllers\loginController.js" />
+    <Content Include="controllers\messageController.js" />
+    <Content Include="controllers\newMessageController.js" />
     <Content Include="controllers\newTeamworkController.js" />
     <Content Include="controllers\registerController.js" />
     <Content Include="controllers\teamworkController.js" />
+    <Content Include="controllers\valuesController.js" />
     <Content Include="index.html" />
     <Content Include="modules\requester.js" />
     <Content Include="modules\storager.js" />
@@ -86,7 +90,10 @@
     <Content Include="scripts\moduleLoader.js" />
     <Content Include="styles\bootstrap.min.css" />
     <Content Include="styles\sb-admin.css" />
+    <Content Include="views\listMessages.html" />
     <Content Include="views\login.html" />
+    <Content Include="views\message.html" />
+    <Content Include="views\newMessage.html" />
     <Content Include="views\newTeamwork.html" />
     <Content Include="views\register.html" />
     <Content Include="views\listTeamworks.html" />
