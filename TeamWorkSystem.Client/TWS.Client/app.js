@@ -60,6 +60,27 @@
                     file.run();
                 });
             });
+
+            this.get("#/messages", function () {
+                require([appConfig.controllersPath + "listMessagesController"], function (file) {
+                    file.run();
+                });
+            });
+
+            this.get("#/messages/:id", function () {
+                var messageId = this.params['id'];
+                require([appConfig.controllersPath + "messageController"], function (file) {
+                    file.run(messageId);
+                });
+            });
+
+            this.get("#/newmessage", function () {
+                require([appConfig.controllersPath + "newMessageController"], function (file) {
+                    file.run();
+                });
+            });
+
+
         });
 
         app.run("#/");
