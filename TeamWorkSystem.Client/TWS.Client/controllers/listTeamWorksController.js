@@ -44,7 +44,7 @@ define(["jquery", "modules", "appConfig"], function ($, modules, appConfig) {
         $("select#categories").on('change', function () {
             $("select option:selected").each(function () {
                 var selected = $(this).attr('id');
-                modules.request.get(modules.config.apiURL + "teamwork/All")
+                modules.request.get(modules.config.apiURL + "teamwork/all")
                 .then(function (requestData) {
                     var filtered = [];
                     for (var i = 0; i < requestData.length; i++) {
