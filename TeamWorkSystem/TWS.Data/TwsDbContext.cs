@@ -6,7 +6,7 @@
 	using TWS.Data.Migrations;
 	using TWS.Models;
 
-	public class TwsDbContext : IdentityDbContext<User>
+	public class TwsDbContext : IdentityDbContext<User>, ITwsDbContext
 	{
 		public TwsDbContext()
 			: base("TeamWorkSystemConnection", throwIfV1Schema: false)
@@ -24,7 +24,25 @@
 
 		public IDbSet<TeamWorkRequest> TeamWorkRequests { get; set; }
 
-        public IDbSet<UsersTeamWorks> UsersTeamworks { get; set; }
+		public IDbSet<UsersTeamWorks> UsersTeamworks { get; set; }
+
+		public new IDbSet<T> Set<T>() where T : class
+		{
+			return base.Set<T>();
+		}
+
+		public DbContext DbContext
+		{
+			get
+			{
+				return this;
+			}
+		}
+
+		public override int SaveChanges()
+		{
+			return base.SaveChanges();
+		}
 
 		public static TwsDbContext Create()
 		{

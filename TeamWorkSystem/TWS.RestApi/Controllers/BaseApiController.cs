@@ -5,7 +5,7 @@
     using TWS.Data;
 
     //[Authorize]
-    //[EnableCors("*", "*", "*", SupportsCredentials = true)]
+    [EnableCors("*", "*", "*", SupportsCredentials = true)]
     public abstract class BaseApiController : ApiController
     {
         protected ITwsData data;

@@ -5,10 +5,10 @@
 
 	public class EFRepository<T> : IRepository<T> where T : class
 	{
-		private DbContext context;
+		private ITwsDbContext context;
 		private IDbSet<T> set;
 
-		public EFRepository(DbContext context)
+		public EFRepository(ITwsDbContext context)
 		{
 			this.context = context;
 			this.set = context.Set<T>();
