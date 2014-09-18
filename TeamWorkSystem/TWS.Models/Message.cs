@@ -16,7 +16,6 @@
         [MinLength(1)]
         public string Text { get; set; }
 
-        [Required]
         public DateTime PostDate { get; set; }
 
         public int TeamWorkId { get; set; }
@@ -25,6 +24,6 @@
 
         public string SentById { get; set; }
 
-        public User SentBy { get; set; }
+        public virtual User SentBy { get; set; }
     }
 }
