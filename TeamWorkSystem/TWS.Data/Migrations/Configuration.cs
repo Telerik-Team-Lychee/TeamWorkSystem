@@ -17,7 +17,7 @@ namespace TWS.Data.Migrations
 
         protected override void Seed(TwsDbContext context)
         {
-            if (context.TeamWorks.Any())
+            if (context.Teamworks.Any())
             {
                 return;
             }
@@ -30,7 +30,7 @@ namespace TWS.Data.Migrations
         {
             for (int i = 1; i <= 6; i++)
             {
-                context.TeamWorks.AddOrUpdate(
+                context.Teamworks.AddOrUpdate(
                     new TeamWork
                     {
                         Name = "Teamwork" + i,
@@ -48,7 +48,7 @@ namespace TWS.Data.Migrations
         {
             for (int i = 1; i <= 6; i++)
             {
-                var teamwork = context.TeamWorks.First();
+                var teamwork = context.Teamworks.First();
 
                 context.Assignments.AddOrUpdate(
                     new Assignment

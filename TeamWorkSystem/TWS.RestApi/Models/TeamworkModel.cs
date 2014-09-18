@@ -20,7 +20,8 @@
                     Name = t.Name,
 					Description = t.Description,
 					GitHubLink = t.GitHubLink,
-					//EndDate = t.EndDate,
+                    StartDate = t.StartDate,
+					EndDate = t.EndDate,
 					Category = t.Category.ToString()
 				};
 			}
@@ -43,8 +44,8 @@
 
         public DateTime StartDate { get; set; }
 
-		//[Required]
-		public string EndDate { get; set; }
+		[Required]
+		public DateTime EndDate { get; set; }
 
 		[Required]
 		public string Category { get; set; }
@@ -53,7 +54,7 @@
         {
             get
             {
-                return DateTime.Now < DateTime.Parse(EndDate);
+                return DateTime.Now < EndDate;
             }
         }
 	}

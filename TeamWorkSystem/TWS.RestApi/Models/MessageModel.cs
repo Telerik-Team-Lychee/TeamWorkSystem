@@ -17,7 +17,8 @@
                      Id = m.Id,
                      Text = m.Text,
                      TeamWorkId = m.TeamWorkId,
-                     SentBy = m.SentBy.UserName
+                     SentBy = m.SentBy.UserName,
+                     PostDate = m.PostDate
                  };
              }
          }
@@ -30,5 +31,7 @@
          public int TeamWorkId { get; set; }
 
          public string SentBy { get; set; }
+
+         public DateTime PostDate { get; set; }
      }
  }

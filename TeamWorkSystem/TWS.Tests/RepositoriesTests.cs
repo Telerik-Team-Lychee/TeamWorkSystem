@@ -39,23 +39,11 @@
 		}
 
 		[TestMethod]
-		public void AddAndGetItemInMessageRepository()
-		{
-			var message = GetValidMessage();
-
-			var createdMessage = dbContext.Messages.Add(message);
-			var messageInDb = dbContext.Set<Message>().Find(createdMessage.Id);
-
-			Assert.IsNotNull(messageInDb);
-			Assert.AreEqual(message.Text, messageInDb.Text);
-		}
-
-		[TestMethod]
 		public void AddAndGetItemInTeamWorkRepository()
 		{
 			var teamWork = GetValidTeamWork();
 
-			var createdTeamWork = dbContext.TeamWorks.Add(teamWork);
+			var createdTeamWork = dbContext.Teamworks.Add(teamWork);
 			var teamWorkInDb = dbContext.Set<TeamWork>().Find(teamWork.Id);
 
 			Assert.IsNotNull(teamWorkInDb);
@@ -91,7 +79,7 @@
 		{
 			var request = GetValidTeamWorkRequest();
 
-			var createdRequest = dbContext.TeamWorkRequests.Add(request);
+			var createdRequest = dbContext.TeamworkRequests.Add(request);
 			var requestInDb = dbContext.Set<TeamWorkRequest>().Find(request.Id);
 
 			Assert.IsNotNull(requestInDb);

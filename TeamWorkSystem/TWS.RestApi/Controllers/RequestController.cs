@@ -6,6 +6,7 @@
     using TWS.Data;
     using TWS.Models;
     using TWS.RestApi.Infrastructure;
+    using TWS.RestApi.Models;
 
     public class RequestController : BaseApiController
     {
@@ -18,18 +19,19 @@
         }
 
         [HttpPost]
-        public IHttpActionResult Send(int id, string message)
+        public IHttpActionResult Send(RequestModel request)
         {
-            var teamwork = this.data.TeamWorks.Find(id);
+            var teamwork = this.data.TeamWorks.Find(request.TeamWorkId);
             if (teamwork == null)
             {
                 return BadRequest("Teamwork does not exist - invalid id");
             }
 
             var currentUserId = this.userIdProvider.GetUserId();
+
             var newRequest = new TeamWorkRequest() 
             { 
-                Message = message, 
+                Message = request.Message, 
                 SentById = currentUserId, 
                 TeamWork = teamwork
             };
@@ -37,7 +39,8 @@
             this.data.TeamWorkRequests.Add(newRequest);
             this.data.SaveChanges();
 
-            return Ok(newRequest);
+            request.Id = newRequest.Id;
+            return Ok(request);
         }
 
         [HttpGet]
@@ -52,7 +55,11 @@
                 return BadRequest("Teamwork does not exist - invalid id");
             }
 
-            var requests = existingTeamwork.Requests;
+            var requests = existingTeamwork
+                .Requests
+                .AsQueryable()
+                .Select(RequestModel.FromRequest);
+
             return Ok(requests);
         }
 
@@ -83,8 +90,9 @@
                 return BadRequest("You don't have permissios to the given teamwork.");
             }
 
-            var userToBeJoinId = currentRequest.SentById;
-            existingTeamwork.Users.Add(new UsersTeamWorks() { Id = userToBeJoinId, IsAdmin = true });
+            var userToBeJoin = this.data.Users.Find(currentRequest.SentById);
+            existingTeamwork.Users.Add(userToBeJoin);
+
             this.data.TeamWorkRequests.Delete(currentRequest);
             this.data.SaveChanges();
 

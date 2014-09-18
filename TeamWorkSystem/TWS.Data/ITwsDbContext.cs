@@ -8,7 +8,7 @@
 
 	public interface ITwsDbContext : IDisposable
 	{
-		IDbSet<TeamWork> TeamWorks { get; set; }
+		IDbSet<TeamWork> Teamworks { get; set; }
 
 		IDbSet<Resource> Resources { get; set; }
 
@@ -16,9 +16,7 @@
 
 		IDbSet<Assignment> Assignments { get; set; }
 
-		IDbSet<TeamWorkRequest> TeamWorkRequests { get; set; }
-
-		IDbSet<UsersTeamWorks> UsersTeamworks { get; set; }
+		IDbSet<TeamWorkRequest> TeamworkRequests { get; set; }
 
 		int SaveChanges();
 

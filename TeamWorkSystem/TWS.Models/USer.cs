@@ -11,7 +11,7 @@
 	{
 		private ICollection<Assignment> assignments;
 		private ICollection<TeamWorkRequest> teamWorkRequests;
-		private ICollection<UsersTeamWorks> teamWorks;
+		private ICollection<TeamWork> teamWorks;
 		private ICollection<Message> messages;
 		private ICollection<Resource> resources;
 
@@ -19,7 +19,7 @@
 		{
 			this.assignments = new HashSet<Assignment>();
 			this.teamWorkRequests = new HashSet<TeamWorkRequest>();
-			this.teamWorks = new HashSet<UsersTeamWorks>();
+			this.teamWorks = new HashSet<TeamWork>();
 			this.messages = new HashSet<Message>();
 			this.resources = new HashSet<Resource>();
 		}
@@ -68,7 +68,7 @@
 			}
 		}
 
-		public virtual ICollection<UsersTeamWorks> TeamWorks
+		public virtual ICollection<TeamWork> TeamWorks
 		{
 			get
 			{

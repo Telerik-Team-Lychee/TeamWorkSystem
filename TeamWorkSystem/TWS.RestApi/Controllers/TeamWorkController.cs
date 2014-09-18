@@ -73,39 +73,18 @@
 
             var teamworkUsers = teamwork
                 .Users
-                .Select(tw =>
+                .Select(u =>
                     new
                     {
-                        Id = tw.Id,
-                        UserName = tw.User.UserName,
-                        FirstName = tw.User.FirstName,
-                        LastName = tw.User.LastName,
-                        Email = tw.User.Email,
-                        IsOnline = tw.User.IsOnline
+                        Id = u.Id,
+                        UserName = u.UserName,
+                        FirstName = u.FirstName,
+                        LastName = u.LastName,
+                        Email = u.Email,
+                        IsOnline = u.IsOnline
                     });
 
             return Ok(teamworkUsers);
-        }
-
-        /// <summary>
-        /// Get all admins in the current teamwork.
-        /// </summary>
-        /// <param name="id">Id for specific teamwork</param>
-        /// <returns>Collection of admins</returns>
-        [HttpGet]
-        public IHttpActionResult GetTeamWorkAdminsById(int id)
-        {
-            var teamwork = this.data.TeamWorks.Find(id);
-            if (teamwork == null)
-            {
-                return BadRequest("Teamwork does not exist - invalid id");
-            }
-
-            var teamworkAdmins = teamwork
-                .Users
-                .Where(tw => tw.IsAdmin);
-
-            return Ok(teamworkAdmins);
         }
 
         /// <summary>
@@ -150,11 +129,11 @@
                 Name = teamWork.Name,
                 Description = teamWork.Description,
                 GitHubLink = teamWork.GitHubLink,
-                EndDate = DateTime.Parse(teamWork.EndDate),
+                EndDate = teamWork.EndDate,
                 Category = (Category)Enum.Parse(typeof(Category), teamWork.Category)
             };
 
-            //newTeamwork.Users.Add(new UsersTeamWorks() { Id = currentUserId, IsAdmin = true });
+            newTeamwork.Users.Add(this.data.Users.Find(currentUserId));
             this.data.TeamWorks.Add(newTeamwork);
             this.data.SaveChanges();
 

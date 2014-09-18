@@ -9,12 +9,12 @@
 	public class TwsDbContext : IdentityDbContext<User>, ITwsDbContext
 	{
 		public TwsDbContext()
-			: base("TeamWorkSystemConnection", throwIfV1Schema: false)
+			: base("TeamWorkSystemLocalConnection", throwIfV1Schema: false)
 		{
 			Database.SetInitializer(new MigrateDatabaseToLatestVersion<TwsDbContext, Configuration>());
 		}
 
-		public IDbSet<TeamWork> TeamWorks { get; set; }
+		public IDbSet<TeamWork> Teamworks { get; set; }
 
 		public IDbSet<Resource> Resources { get; set; }
 
@@ -22,9 +22,7 @@
 
 		public IDbSet<Assignment> Assignments { get; set; }
 
-		public IDbSet<TeamWorkRequest> TeamWorkRequests { get; set; }
-
-		public IDbSet<UsersTeamWorks> UsersTeamworks { get; set; }
+		public IDbSet<TeamWorkRequest> TeamworkRequests { get; set; }
 
 		public new IDbSet<T> Set<T>() where T : class
 		{

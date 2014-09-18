@@ -15,7 +15,7 @@
           });
 
        })
-       .then(addEvents());
+       .then(addEvents);
     }
 
     function addEvents() {

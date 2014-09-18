@@ -9,7 +9,7 @@
 
 	public class TeamWork
 	{
-		private ICollection<UsersTeamWorks> users;
+		private ICollection<User> users;
 		private ICollection<Message> messages;
 		private ICollection<Resource> resources;
 		private ICollection<TeamWorkRequest> requests;
@@ -17,7 +17,7 @@
 
 		public TeamWork()
 		{
-			this.users = new HashSet<UsersTeamWorks>();
+            this.users = new HashSet<User>();
 			this.messages = new HashSet<Message>();
 			this.resources = new HashSet<Resource>();
 			this.requests = new HashSet<TeamWorkRequest>();
@@ -97,7 +97,7 @@
 			}
 		}
 
-		public virtual ICollection<UsersTeamWorks> Users
+		public virtual ICollection<User> Users
 		{
 			get
 			{

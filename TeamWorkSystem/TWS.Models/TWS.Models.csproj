@@ -63,7 +63,6 @@
     <Compile Include="Assignment.cs" />
     <Compile Include="TeamWork.cs" />
     <Compile Include="User.cs" />
-    <Compile Include="UsersTeamWorks.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
