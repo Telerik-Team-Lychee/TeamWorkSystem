@@ -24,6 +24,7 @@
 
     function addMessage() {
         var data = "grant_type=password&username=" + userInfo['username'] + "&password=" + userInfo['password'];
+
         modules.request.post(url, data, "application/x-www-form-urlencoded") //"application/x-www-form-urlencoded"
         .then(function (requestData) {
             modules.storage.set("token", requestData.access_token);

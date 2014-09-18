@@ -17,6 +17,7 @@
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Description</th>
+                                <th>Priority</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -62,12 +63,13 @@
         <td>{{Id}}</td>
         <td>{{{Name}}}</td>
         <td>{{{Description}}}</td>
+        <td>{{{Priority}}}</td>
         <td>{{{Status}}}</td>
     </tr>
 </script>
 
 <script id="message-template" type="text/x-mustache-template">
-    <li id="{{Id}}" class="list-group-item">
-        <span>{{{Name}}}</span>
+    <li class="list-group-item">
+        <span>{{{Text}}}</span>
     </li>
 </script>
