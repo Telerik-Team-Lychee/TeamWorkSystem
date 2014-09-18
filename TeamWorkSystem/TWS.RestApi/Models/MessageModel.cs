@@ -16,7 +16,6 @@
                  {
                      Id = m.Id,
                      Text = m.Text,
-                     PostDate = m.PostDate,
                      TeamWorkId = m.TeamWorkId,
                      SentBy = m.SentBy.UserName
                  };
@@ -27,9 +26,6 @@
 
          [MinLength(1)]
          public string Text { get; set; }
-
-         [Required]
-         public DateTime PostDate { get; set; }
 
          public int TeamWorkId { get; set; }
 

@@ -30,12 +30,9 @@
 
 			var newMessage = new Message()
 			{
-				Id = messageModel.Id,
 				Text = messageModel.Text,
-				PostDate = messageModel.PostDate,
 				TeamWorkId = messageModel.TeamWorkId,
                 SentById = currentUserId
-
 			};
 
 			this.data.Messages.Add(newMessage);
