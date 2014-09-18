@@ -96,7 +96,6 @@ body {
     border-radius: 4px;
     z-index: 1;
     min-width: 130px;
-
 }
 
 .navbar-nav .submenu li {
@@ -131,6 +130,12 @@ body {
     padding-left: 10px;
     padding-right: 10px;
     margin-top: 10px;
+}
+
+.span-category {
+    right:10px;
+    position: absolute;
+    font-size: 0.8em;
 }
 
 #new-teamwork {

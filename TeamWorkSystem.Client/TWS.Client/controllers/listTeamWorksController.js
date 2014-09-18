@@ -1,5 +1,5 @@
 define(["jquery", "modules", "appConfig"], function ($, modules, appConfig) {
-    var url = modules.config.apiURL + "teamwork/all" ;
+    var url = modules.config.apiURL + "teamwork/all";
 
     function run() {
         modules.view.load("listTeamworks")
@@ -24,9 +24,8 @@ define(["jquery", "modules", "appConfig"], function ($, modules, appConfig) {
               else {
                   $("#categories").loadTemplate(requestData)
               }
-          });
-       })
-       //.then(addEvents());
+          }).then(filterByCategory());
+       });
     }
 
     function addEvents() {
@@ -39,6 +38,36 @@ define(["jquery", "modules", "appConfig"], function ($, modules, appConfig) {
         });
     }
 
+    function filterByCategory() {
+        console.log('filtered');
+        var selected = "";
+        $("select#categories").on('change', function () {
+            $("select option:selected").each(function () {
+                var selected = $(this).attr('id');
+                modules.request.get(modules.config.apiURL + "teamwork/all")
+                .then(function (requestData) {
+                    var filtered = [];
+                    for (var i = 0; i < requestData.length; i++) {
+                        if (requestData[i].Category == selected) {
+                            //console.log(requestData[i].Category)
+                            filtered.push(requestData[i]);
+                        }
+                    }
+
+                    if (filtered.length > 0) {
+                        $("#teamworks").empty();
+                        for (var i = 0; i < filtered.length; i++) {
+                            $("#teamworks").loadTemplate([filtered[i]])
+                        }
+                        filtered = [];
+                    } else {
+                        $("#teamworks").html('<p>There are no teamworks in this category.</p>');
+
+                    }
+                });
+            });
+        });
+    }
 
     return {
         run: run
