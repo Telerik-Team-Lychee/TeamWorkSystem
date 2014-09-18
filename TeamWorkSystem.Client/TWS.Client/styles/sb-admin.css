@@ -305,3 +305,18 @@ ul.alert-dropdown {
 .panel-yellow a:hover {
     color: #df8a13;
 }
+
+/*listMessages*/
+    #new-message {
+    right:10px;
+    top:25px;
+    position: absolute;
+    font-size: 1.2em;
+    font-weight:bold;
+    color: #000;
+    background: #e7e7e7;
+}
+
+#new-message:hover {
+    background: #f7f7f7;
+}
