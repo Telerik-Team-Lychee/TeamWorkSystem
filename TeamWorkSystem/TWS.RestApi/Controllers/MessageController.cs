@@ -31,7 +31,7 @@
 				Text = messageModel.Text,
 				PostDate = messageModel.PostDate,
 				TeamWorkId = messageModel.TeamWorkId,
-				SentBy = messageModel.SentById
+				SentById = messageModel.SentById
 
 			};
 			this.data.Messages.Add(newMessage);
