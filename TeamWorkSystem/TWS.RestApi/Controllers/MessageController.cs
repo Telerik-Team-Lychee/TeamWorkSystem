@@ -43,9 +43,9 @@
 		}
 
 		[HttpGet]
-		public IQueryable<MessageModel> All(int teamWorkId)
+		public IQueryable<MessageModel> All(int id)
 		{
-			var messages = this.data.Messages.All().Select(MessageModel.FromMessage).Where(m => m.TeamWorkId == teamWorkId);
+			var messages = this.data.Messages.All().Select(MessageModel.FromMessage).Where(m => m.TeamWorkId == id);
 
 			return messages;
 		}

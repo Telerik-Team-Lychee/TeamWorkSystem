@@ -13,12 +13,12 @@
 	{
 		private IUserIdProvider userIdProvider;
 
-		public AssignmentController(ITwsData data, IUserIdProvider userIdProvider)
+		public AssignmentController(ITwsData data)//, IUserIdProvider userIdProvider)
 			: base(data)
 		{
-			this.userIdProvider = userIdProvider;
+			//this.userIdProvider = userIdProvider;
 		}
-
+        [EnableCors("*", "*", "*")]
 		[HttpGet]
 		public IHttpActionResult ByTeamwork(int id)
 		{
