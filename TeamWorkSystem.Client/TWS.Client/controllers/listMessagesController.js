@@ -1,6 +1,6 @@
 ﻿define(["jquery", "modules", "appConfig"], function ($, modules, appConfig) {
-    var url = modules.config.apiURL + "Message/All";
-    console.log(modules.config.apiURL);
+    var url = modules.config.apiURL + "TeamWork/All";
+
     function run() {
         modules.view.load("listMessages")
        .then(function () {
@@ -14,15 +14,6 @@
               }
           });
 
-           modules.request.get(modules.config.apiURL + "TeamWork/All")
-          .then(function (requestData) {
-              if (requestData.length < 2) {
-                  $("#teamworks").loadTemplate([requestData])
-              }
-              else {
-                  $("#teamworks").loadTemplate(requestData)
-              }
-          });
        })
        .then(addEvents());
     }
@@ -33,7 +24,7 @@
             var self = $(this);
 
             var id = self.attr('id');
-            modules.redirect("#/teamwork/" + id);
+            modules.redirect("#/messages/" + id);
         });
     }
 

@@ -8,10 +8,10 @@
         modules.request.get(modules.config.apiURL + "TeamWork/All")
         .then(function (requestData) {
             if (requestData.length < 2) {
-                $("#Teamworks").loadTemplate([requestData])
+                $("#TeamWorkId").loadTemplate([requestData])
             }
             else {
-                $("#Teamworks").loadTemplate(requestData)
+                $("#TeamWorkId").loadTemplate(requestData)
             }
         })
             .then(addEvents())
@@ -31,8 +31,8 @@
     }
 
     function addmessage() {
-        var data = "Name=" + messageInfo['Name'] + "&Description=" + messageInfo['Description'] + "&GitHubLink=" + messageInfo['GitHubLink']
-        + "&Category" + messageInfo['Category'] + "&EndDate=" + messageInfo['EndDate'];
+        var data = "Text=" + messageInfo['Description'] + "&PostDate=" + messageInfo['GitHubLink']
+        + "&TeamWorkId" + messageInfo['TeamWorkId'] + "&SentBy=" + modules.storage.get("user");
 
         modules.request.post(url, data, "application/x-www-form-urlencoded")
         .then(function () {
