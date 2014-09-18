@@ -24,11 +24,11 @@ define(["jquery", "modules", "appConfig"], function ($, modules, appConfig) {
               }
           });
        })
-       .then(addEvents());
+       //.then(addEvents());
     }
 
     function addEvents() {
-        $("#mainContent").on("click", ".teamwork-box li", function () {
+        $("#mainContent").on("click", "#teamworks a", function () {
             event.preventDefault();
             var self = $(this);
 

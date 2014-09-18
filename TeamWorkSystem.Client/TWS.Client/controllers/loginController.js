@@ -1,6 +1,6 @@
 ﻿define(["jquery", "modules"], function ($, modules) {
     var userInfo = {},
-        url = modules.config.apiURL + "Token";
+        url = modules.config.tokenURL;
 
     function run() {
         modules.view.load("login")

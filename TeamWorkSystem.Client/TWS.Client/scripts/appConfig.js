@@ -1,7 +1,8 @@
 ﻿define(function () {
     return {
         // API URL
-        apiURL: "http://teamworksystem.apphb.com/api/",
+        apiURL: "http://localhost:58181/api/",
+        tokenURL: "http://localhost:58181/Token",
 
         // Main application content container
         mainContainer: "#mainContent",
