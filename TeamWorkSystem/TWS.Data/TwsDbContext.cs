@@ -9,7 +9,7 @@
 	public class TwsDbContext : IdentityDbContext<User>, ITwsDbContext
 	{
 		public TwsDbContext()
-			: base("TeamWorkSystemLocalConnection", throwIfV1Schema: false)
+            : base("TeamworkSystemAppHarbor", throwIfV1Schema: false)
 		{
 			Database.SetInitializer(new MigrateDatabaseToLatestVersion<TwsDbContext, Configuration>());
 		}
@@ -66,5 +66,5 @@
 
 			base.OnModelCreating(modelBuilder);
 		}
-	}
+    }
 }
