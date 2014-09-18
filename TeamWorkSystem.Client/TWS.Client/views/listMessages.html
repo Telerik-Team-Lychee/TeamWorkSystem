@@ -1,0 +1,19 @@
+﻿<div class="col-lg-8">
+    <div class="top-box">
+        <h1>Recent messages</h1>
+        <div class="controls">
+            <a href="#/newmessage" class="btn btn-default" id="new-message">Send new message</a>
+        </div>
+    </div>
+    <div class="messages-box">
+        <ul id="messages" data-template="message-template" class="list-group"></ul>
+    </div>
+</div>
+
+<script id="message-template" type="text/x-mustache-template">
+    <li id="{{Id}}" class="list-group-item">
+        <span>{{{PostDate}}}</span>
+        <span>{{{TeamWork}}}</span>
+        <span><a href="#/messages/{Id}">View This Message</a></span>
+    </li>
+</script>
