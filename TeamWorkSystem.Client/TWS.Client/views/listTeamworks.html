@@ -1,32 +1,33 @@
-﻿<div class="col-sm-6">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title">Active Teamworks</h3>
-        </div>
-        <div class="panel-body">
-            <div id="teamworks" data-template="teamwork-template" class="list-group">
+﻿<div class="row">
+    <div class="col-sm-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Active Teamworks</h3>
+            </div>
+            <div class="panel-body">
+                <div id="teamworks" data-template="teamwork-template" class="list-group">
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="col-lg-3">
-    <div class="form-group">
-        <label>Filter Teamworks</label>
-        <select id="categories" data-template="category-template" class="form-control"></select>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>Filter Teamworks</label>
+            <select id="categories" data-template="category-template" class="form-control"></select>
+        </div>
+        <!--<div class="top-box">
+            <span>Filter Teamworks</span>
+            <select id="categories" data-template="category-template"></select>
+        </div>-->
+        <!--<div class="teamwork-box">
+            <h3>Active Teamworks</h3>
+            <ul id="teamworks" data-template="teamwork-template" class="list-group"></ul>
+        </div>-->
     </div>
-    <!--<div class="top-box">
-        <span>Filter Teamworks</span>
-        <select id="categories" data-template="category-template"></select>
-    </div>-->
-    <!--<div class="teamwork-box">
-        <h3>Active Teamworks</h3>
-        <ul id="teamworks" data-template="teamwork-template" class="list-group"></ul>
-    </div>-->
+    <div class="col-lg-3">
+        <a href="#/newteamwork"><button type="button" class="btn btn-success btn-lg btn-block">Add Teamwork</button></a>
+    </div>
 </div>
-<div class="col-lg-3">
-    <a href="#/newteamwork"><button type="button" class="btn btn-success btn-lg btn-block">Add Teamwork</button></a>
-</div>
-
 <!--<script id="teamwork-template" type="text/x-mustache-template">
     <li id="{{Id}}" class="list-group-item">
         <span>{{{Name}}}</span>
@@ -37,12 +38,11 @@
 </script>-->
 
 <script id="teamwork-template" type="text/x-mustache-template">
-    <a href="#/teamwokr/{{Id}}" class="list-group-item">{{{Name}}} <span class="badge">{{{Category}}}</span></a>
-    <button type="button" class="btn btn-sm btn-success">Join Group</button>
+    <a href="#/teamwork/{{Id}}" class="list-group-item">{{{Name}}}</a>
 </script>
 
 <script id="category-template" type="text/x-mustache-template">
-    <option id="{{id}}" class="list-group-item" value="{{Id}}">
-        {{{Name}}}
+    <option id="{{.}}" class="list-group-item" value="{{.}}">
+        {{{.}}}
     </option>
 </script>

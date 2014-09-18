@@ -4,7 +4,7 @@
 
     using TWS.Data;
 
-    [Authorize]
+    //[Authorize]
     public abstract class BaseApiController : ApiController
     {
         protected ITwsData data;

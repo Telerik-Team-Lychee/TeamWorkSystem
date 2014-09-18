@@ -6,6 +6,7 @@ define(["jquery", "modules", "appConfig"], function ($, modules, appConfig) {
        .then(function () {
            modules.request.get(url)
           .then(function (requestData) {
+              console.log(requestData);
               if (requestData.length < 2) {
                   $("#teamworks").loadTemplate([requestData])
               }
@@ -14,8 +15,9 @@ define(["jquery", "modules", "appConfig"], function ($, modules, appConfig) {
               }
           });
 
-           modules.request.get(modules.config.apiURL + "categories/all")
+           modules.request.get(modules.config.apiURL + "teamwork/GetCategories")
           .then(function (requestData) {
+              console.log(requestData);
               if (requestData.length < 2) {
                   $("#categories").loadTemplate([requestData])
               }

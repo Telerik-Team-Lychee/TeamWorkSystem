@@ -1,14 +1,14 @@
 ﻿namespace TWS.RestApi.Controllers
 {
     using System;
-    using System.Linq;
-    using System.Web.Http;
-    using System.Web.Http.Cors;
+	using System.Linq;
+	using System.Web.Http;
+	using System.Web.Http.Cors;
 
-    using TWS.Data;
-    using TWS.Models;
+	using TWS.Data;
+	using TWS.Models;
     using TWS.Models.Enumerations;
-    using TWS.RestApi.Infrastructure;
+	using TWS.RestApi.Infrastructure;
     using TWS.RestApi.Models;
 
 	[EnableCors("*", "*", "*")]
@@ -16,12 +16,12 @@
 	{
 		private IUserIdProvider userIdProvider;
 
-		public AssignmentController(ITwsData data, IUserIdProvider userIdProvider)
+		public AssignmentController(ITwsData data)//, IUserIdProvider userIdProvider)
 			: base(data)
 		{
-			this.userIdProvider = userIdProvider;
+			//this.userIdProvider = userIdProvider;
 		}
-
+        [EnableCors("*", "*", "*")]
 		[HttpGet]
 		public IHttpActionResult ByTeamwork(int id)
 		{

@@ -7,16 +7,17 @@
            modules.request.get(url + id)
            .then(function (requestData) {
                $("#single-teamwork").loadTemplate([requestData]);
-           }, function () {
-               modules.redirect("#/teamwork/" + id);
            });
 
-           modules.request.get(modules.config.apiURL + "assignment/ByTeamwork/" + id)
+           modules.request.get(modules.config.apiURL + "Assignment/ByTeamwork/" + id)
            .then(function (requestData) {
-               console.log(requestData);
                $("#assignments").loadTemplate(requestData);
-           }, function () {
-               modules.redirect("#/teamwork/" + id);
+           });
+
+           modules.request.get(modules.config.apiURL + "Message/All/" + id)
+           .then(function (requestData) {
+               //console.log(requestData);
+              $("#messages").loadTemplate(requestData);
            });
 
        });
