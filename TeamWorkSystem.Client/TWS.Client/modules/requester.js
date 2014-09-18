@@ -10,7 +10,10 @@
             beforeSend: function (xhr) {
                 var token = JSON.parse(localStorage.getItem("token"));
 
-                xhr.setRequestHeader("Authorization", "Bearer " + token);
+                if (token !== null) {
+                    //xhr.withCredentials = true;
+                    xhr.setRequestHeader("Authorization", "Bearer " + token);
+                }
             },
             success: function resolveDeferred(requestData) {
                 deferred.resolve(requestData);
@@ -23,11 +26,10 @@
         if (content == null) {
             requestOptions.contentType = "application/json; charset=utf-8";
         }
-        else
-        {
+        else {
             requestOptions.contentType = content;
         }
-        
+
         $.ajax(requestOptions);
 
         return deferred.promise;
