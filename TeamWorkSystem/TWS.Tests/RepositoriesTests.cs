@@ -1,4 +1,4 @@
-﻿namespace TWS.Tests
+﻿namespace TWS.Repositories.Tests
 {
 	using System;
 	using System.Data.Entity;
@@ -14,17 +14,18 @@
 	[TestClass]
 	public class RepositoriesTests
 	{
-		public ITwsDbContext dbContext { get; set; }
+		public TwsDbContext dbContext { get; set; }
 
 		private static TransactionScope tran;
 
 		public IRepository<Message> MessageRepo { get; set; }
 
 		public RepositoriesTests()
-        {
+		{
 			this.dbContext = new TwsDbContext();
 			this.MessageRepo = new EFRepository<Message>(this.dbContext);
-        }
+			this.dbContext.Database.Initialize(false);
+		}
 
 		[TestInitialize]
 		public void TestInit()
@@ -63,15 +64,15 @@
 		}
 
 		[TestMethod]
-		public void AddAndGetItemInMessageRepository()
+		public void AddAndGetItemInResourcesRepository()
 		{
-			var message = GetValidMessage();
+			var resource = GetValidResource();
 
-			var createdMessage = dbContext.Messages.Add(message);
-			var messageInDb = dbContext.Set<Message>().Find(message.Id);
+			var createdResource = dbContext.Resources.Add(resource);
+			var resourceInDb = dbContext.Set<Resource>().Find(resource.Id);
 
-			Assert.IsNotNull(messageInDb);
-			Assert.AreEqual(message.Text, messageInDb.Text);
+			Assert.IsNotNull(resourceInDb);
+			Assert.AreEqual(resource.Name, resourceInDb.Name);
 		}
 
 		[TestMethod]
