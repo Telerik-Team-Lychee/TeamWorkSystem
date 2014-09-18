@@ -94,6 +94,12 @@
                     file.run();
                 });
             });
+
+            this.get("#/newassignment", function () {
+                require([appConfig.controllersPath + "newAssignmentController"], function (file) {
+                    file.run();
+                });
+            });
         });
 
         app.run("#/");
