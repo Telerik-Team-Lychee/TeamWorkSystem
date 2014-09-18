@@ -1,15 +1,15 @@
 ﻿namespace TWS.RestApi.Controllers
 {
-    using System;
+	using System;
 	using System.Linq;
 	using System.Web.Http;
 	using System.Web.Http.Cors;
 
 	using TWS.Data;
 	using TWS.Models;
-    using TWS.Models.Enumerations;
+	using TWS.Models.Enumerations;
 	using TWS.RestApi.Infrastructure;
-    using TWS.RestApi.Models;
+	using TWS.RestApi.Models;
 
 	//[EnableCors("*", "*", "*")]
 	public class AssignmentController : BaseApiController
@@ -21,7 +21,7 @@
 		{
 			//this.userIdProvider = userIdProvider;
 		}
-        [EnableCors("*", "*", "*")]
+		[EnableCors("*", "*", "*")]
 		[HttpGet]
 		public IHttpActionResult ByTeamwork(int id)
 		{
@@ -35,10 +35,10 @@
 				return BadRequest("Teamwork does not exist - invalid id");
 			}
 
-            var assignments = existingTeamwork
-                .Assignments
-                .AsQueryable()
-                .Select(AssignmentModel.FromAssignment);
+			var assignments = existingTeamwork
+				.Assignments
+				.AsQueryable()
+				.Select(AssignmentModel.FromAssignment);
 
 			return Ok(assignments);
 		}
@@ -57,17 +57,17 @@
 				return BadRequest("Teamwork does not exist - invalid id");
 			}
 
-            var newAssignment = new Assignment
-            {
-                Name = assignment.Name,
-                Description = assignment.Description,
-                Priority = assignment.Priority
-            };
+			var newAssignment = new Assignment
+			{
+				Name = assignment.Name,
+				Description = assignment.Description,
+				Priority = assignment.Priority
+			};
 
-            this.data.Assignments.Add(newAssignment);
+			this.data.Assignments.Add(newAssignment);
 			this.data.SaveChanges();
 
-            assignment.Id = newAssignment.Id;
+			assignment.Id = newAssignment.Id;
 			return Ok(assignment);
 		}
 
@@ -85,15 +85,15 @@
 				return BadRequest("Assignment does not exist.");
 			}
 
-            var newAssignment = new Assignment
-            {
-                Name = assignment.Name,
-                Description = assignment.Description,
-                Priority = assignment.Priority,
-                Status = (AssignmentStatus)Enum.Parse(typeof(AssignmentStatus), assignment.Status)
-            };
+			var newAssignment = new Assignment
+			{
+				Name = assignment.Name,
+				Description = assignment.Description,
+				Priority = assignment.Priority,
+				Status = (AssignmentStatus)Enum.Parse(typeof(AssignmentStatus), assignment.Status)
+			};
 
-            existingAssignment = newAssignment;
+			existingAssignment = newAssignment;
 			this.data.SaveChanges();
 
 			return Ok();

@@ -26,13 +26,13 @@
 				return BadRequest(this.ModelState);
 			}
 
-            var currentUserId = this.userIdProvider.GetUserId();
+			var currentUserId = this.userIdProvider.GetUserId();
 
 			var newMessage = new Message()
 			{
 				Text = messageModel.Text,
 				TeamWorkId = messageModel.TeamWorkId,
-                SentById = currentUserId
+				SentById = currentUserId
 			};
 
 			this.data.Messages.Add(newMessage);
@@ -46,11 +46,11 @@
 		[HttpGet]
 		public IQueryable<MessageModel> All(int id)
 		{
-            var messages = this.data
-                .Messages
-                .All()
-                .Where(m => m.TeamWorkId == id)
-                .Select(MessageModel.FromMessage);
+			var messages = this.data
+				.Messages
+				.All()
+				.Where(m => m.TeamWorkId == id)
+				.Select(MessageModel.FromMessage);
 
 			return messages;
 		}
