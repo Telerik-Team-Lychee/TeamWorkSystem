@@ -1,10 +1,9 @@
 ﻿define(["jquery", "modules"], function ($, modules) {
-    var teamworkInfo = {};
+    var messageInfo = {};
     var url = modules.config.apiURL + "Message/Create";
 
     function run() {
         modules.view.load("newMessage")
-
         modules.request.get(modules.config.apiURL + "TeamWork/All")
         .then(function (requestData) {
             if (requestData.length < 2) {
@@ -13,12 +12,13 @@
             else {
                 $("#TeamWorkId").loadTemplate(requestData)
             }
+
+            addEvents();
         })
-            .then(addEvents())
     }
 
     function addEvents() {
-        $("#mainContent").on("click", "#create-message", function (event) {
+        $("form").on("submit", function (event) {
             event.preventDefault();
             var self = $(this);
 
@@ -31,12 +31,14 @@
     }
 
     function addmessage() {
-        var data = "Text=" + messageInfo['Description'] + "&PostDate=" + messageInfo['GitHubLink']
-        + "&TeamWorkId" + messageInfo['TeamWorkId'] + "&SentBy=" + modules.storage.get("user");
+        var data =
+            "Text=" + messageInfo['messageText'] +
+            "&TeamWorkId=" + messageInfo['TeamWorkId'] +
+            "&SentBy = " + modules.storage.get("user");
 
         modules.request.post(url, data, "application/x-www-form-urlencoded")
         .then(function () {
-            modules.redirect("#/messages/");
+            modules.redirect("#/teamwork/" + messageInfo['TeamWorkId']);
         });
     }
 
