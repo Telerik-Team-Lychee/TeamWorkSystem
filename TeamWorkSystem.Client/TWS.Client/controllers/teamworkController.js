@@ -39,7 +39,7 @@
 
     function deleteAss(assId) {
 
-        modules.request.get(url + "Assignment/Delete/" + assId);
+        modules.request.get(modules.config.apiURL + "Assignment/Delete/" + assId);
     }
 
     return {
