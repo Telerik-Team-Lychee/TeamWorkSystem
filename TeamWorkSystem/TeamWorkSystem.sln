@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWS.Repositories.Tests", "T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWS.Services.Tests", "TWS.Services.Tests\TWS.Services.Tests.csproj", "{E5FE9656-8978-4E22-8291-E74C5B6D28C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWS.Services.IntegrationTests", "TWS.Services.IntergrationTests\TWS.Services.IntegrationTests.csproj", "{2A5EBC6B-0803-4F60-AF43-1BDDA5DB275C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{E5FE9656-8978-4E22-8291-E74C5B6D28C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5FE9656-8978-4E22-8291-E74C5B6D28C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5FE9656-8978-4E22-8291-E74C5B6D28C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A5EBC6B-0803-4F60-AF43-1BDDA5DB275C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A5EBC6B-0803-4F60-AF43-1BDDA5DB275C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A5EBC6B-0803-4F60-AF43-1BDDA5DB275C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A5EBC6B-0803-4F60-AF43-1BDDA5DB275C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
