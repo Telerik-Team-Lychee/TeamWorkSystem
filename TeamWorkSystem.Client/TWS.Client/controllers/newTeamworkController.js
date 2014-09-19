@@ -1,4 +1,4 @@
-﻿define(["jquery", "modules"], function ($, modules) {
+﻿define(["jquery", "modules", "pubnub"], function ($, modules) {
     var teamworkInfo = {};
     var url = modules.config.apiURL + "Teamwork/Create";
 
@@ -14,7 +14,7 @@
         }
 
             addEvents();
-        });
+        }).then(subscribe('teamwork1', "Teamwork teamwork1 created."));
     }
 
     function addEvents() {
@@ -44,6 +44,38 @@
             modules.redirect("#/teamwork/" + id);
         });
     }
+
+    function subscribe(channel, message) {
+        $('#mainContent').on('click', '#create-teamwork', function () {
+            var publishKey = 'pub-c-914d69be-0ad7-4b88-8a4b-fc9543e9fa2d';
+            var subscribeKey = 'sub-c-718ede88-3f0f-11e4-8c81-02ee2ddab7fe';
+
+            var pubnub = PUBNUB.init({
+                publish_key: publishKey,
+                subscribe_key: subscribeKey,
+            });
+
+            pubnub.subscribe({
+                channel: channel,
+                message: function (message) {
+                    $('#notifications').text(message);
+                }
+            });
+            console.log('subscribed');
+            console.log(teamworkInfo['Name']);
+            pubnub.publish({
+                channel: channel,
+                message: message
+            });
+
+            //pubnub.bind('click', pubnub.$('create-teamwork'), function (e) {
+            //    pubnub.publish({
+            //        channel: channel,
+            //        message: message //"Teamwork " + channel + " created."
+            //    });
+            //});
+        })
+   }
 
     return {
         run: run

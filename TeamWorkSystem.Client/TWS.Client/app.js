@@ -7,6 +7,7 @@
             "Q": "scripts/libs/q",
             "underscore": "scripts/libs/underscore",
             "sammy": "scripts/libs/sammy",
+            "pubnub": "scripts/libs/pubnub.min",
 
             // Modules
             "router": "modules/router",

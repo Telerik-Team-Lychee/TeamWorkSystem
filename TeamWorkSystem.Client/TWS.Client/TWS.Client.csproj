@@ -84,6 +84,7 @@
     <Content Include="scripts\appConfig.js" />
     <Content Include="scripts\libs\jquery.js" />
     <Content Include="scripts\libs\mustache.js" />
+    <Content Include="scripts\libs\pubnub.min.js" />
     <Content Include="scripts\libs\q.js" />
     <Content Include="scripts\libs\require.js" />
     <Content Include="scripts\libs\sammy.js" />
