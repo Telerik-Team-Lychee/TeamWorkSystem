@@ -10,6 +10,7 @@
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
 	using TWS.Models;
 	using TWS.Models.Enumerations;
+	using TWS.Services.Tests;
 
 	[TestClass]
 	public class RepositoriesTests
@@ -42,7 +43,7 @@
 		[TestMethod]
 		public void AddAndGetItemInTeamWorkRepository()
 		{
-			var teamWork = GetValidTeamWork();
+			var teamWork = Entities.GetValidTeamWork();
 
 			var createdTeamWork = dbContext.Teamworks.Add(teamWork);
 			var teamWorkInDb = dbContext.Set<TeamWork>().Find(teamWork.Id);
@@ -54,7 +55,7 @@
 		[TestMethod]
 		public void AddAndGetItemInResourcesRepository()
 		{
-			var resource = GetValidResource();
+			var resource = Entities.GetValidResource();
 
 			var createdResource = dbContext.Resources.Add(resource);
 			var resourceInDb = dbContext.Set<Resource>().Find(resource.Id);
@@ -66,7 +67,7 @@
 		[TestMethod]
 		public void AddAndGetItemInAssignmentRepository()
 		{
-			var assignment = GetValidAssignment();
+			var assignment = Entities.GetValidAssignment();
 
 			var createdAssignment = dbContext.Assignments.Add(assignment);
 			var assignmentInDb = dbContext.Set<Assignment>().Find(assignment.Id);
@@ -78,88 +79,13 @@
 		[TestMethod]
 		public void AddAndGetItemInRequestRepository()
 		{
-			var request = GetValidTeamWorkRequest();
+			var request =  Entities.GetValidTeamWorkRequest();
 
 			var createdRequest = dbContext.TeamworkRequests.Add(request);
 			var requestInDb = dbContext.Set<TeamWorkRequest>().Find(request.Id);
 
 			Assert.IsNotNull(requestInDb);
 			Assert.AreEqual(request.Message, requestInDb.Message);
-		}
-
-		private Message GetValidMessage()
-		{
-			var message = new Message()
-			{
-				PostDate = DateTime.Now,
-				TeamWork = GetValidTeamWork(),
-				SentBy = GetValidUser(),
-				Text = "What's going on fellas."
-			};
-
-			return message;
-		}
-
-		private User GetValidUser()
-		{
-			var user = new User()
-			{
-				FirstName = "Pesho",
-				LastName = "Peshev",
-				IsOnline = false
-			};
-
-			return user;
-		}
-
-		private TeamWork GetValidTeamWork()
-		{
-			var teamWork = new TeamWork()
-			{
-				Name = "WebServices",
-				Description = "Description",
-				EndDate = new DateTime(2015, 2, 1),
-				Category = Category.CSharp,
-			};
-
-			return teamWork;
-		}
-
-		private Assignment GetValidAssignment()
-		{
-			var assignment = new Assignment()
-			{
-				Priority = 10,
-				Status = AssignmentStatus.Assigned,
-				Name = "Issue64",
-				Description = "Answer 42",
-			};
-
-			return assignment;
-		}
-
-		private TeamWorkRequest GetValidTeamWorkRequest()
-		{
-			var teamWorkRequest = new TeamWorkRequest()
-			{
-				Message = "Add me",
-				SentBy = GetValidUser(),
-				TeamWork = GetValidTeamWork()
-			};
-
-			return teamWorkRequest;
-		}
-
-		private Resource GetValidResource()
-		{
-			var resource = new Resource()
-			{
-				Name = "Solution",
-				UploadedBy = GetValidUser(),
-				Data = new byte[] { 1, 21, 2, 1, 2 }
-			};
-
-			return resource;
 		}
 	}
 }

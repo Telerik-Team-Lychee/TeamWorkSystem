@@ -84,9 +84,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="BaseSetup.cs" />
+    <Compile Include="Entities.cs" />
     <Compile Include="Fakes\FakeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MessageControllerTests.cs" />
+    <Compile Include="TeamWorkControllerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TWS.Data\TWS.Data.csproj">

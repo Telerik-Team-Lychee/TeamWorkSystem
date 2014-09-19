@@ -89,6 +89,10 @@
       <Project>{5cdcaacb-e70f-4524-b942-a9df202ae560}</Project>
       <Name>TWS.RestApi</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TWS.Services.Tests\TWS.Services.Tests.csproj">
+      <Project>{e5fe9656-8978-4e22-8291-e74c5b6d28c6}</Project>
+      <Name>TWS.Services.Tests</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

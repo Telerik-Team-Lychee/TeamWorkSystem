@@ -4,7 +4,7 @@
     using System.Web.Http.Cors;
     using TWS.Data;
 
-    //[Authorize]
+    [Authorize]
     [EnableCors("*", "*", "*", SupportsCredentials = true)]
     public abstract class BaseApiController : ApiController
     {
