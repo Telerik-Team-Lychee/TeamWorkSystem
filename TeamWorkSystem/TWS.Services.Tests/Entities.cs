@@ -1,7 +1,7 @@
 ﻿namespace TWS.Services.Tests
 {
 	using System;
-
+	using System.Collections.Generic;
 	using TWS.Models;
 	using TWS.Models.Enumerations;
 
@@ -39,8 +39,10 @@
 				Name = "WebServices",
 				Description = "Description",
 				EndDate = new DateTime(2015, 2, 1),
-				Category = Category.CSharp,
+				Category = Category.CSharp
 			};
+
+			teamWork.Requests.Add(GetValidTeamWorkRequest());
 
 			return teamWork;
 		}
@@ -63,8 +65,7 @@
 			var teamWorkRequest = new TeamWorkRequest()
 			{
 				Message = "Add me",
-				SentBy = GetValidUser(),
-				TeamWork = GetValidTeamWork()
+				SentBy = GetValidUser()
 			};
 
 			return teamWorkRequest;

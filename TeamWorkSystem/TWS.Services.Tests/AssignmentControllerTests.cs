@@ -15,7 +15,7 @@
 	public class AssignmentControllerTests
 	{
 		[TestMethod]
-		public void AddWhenMessageIsValidShouldAddMessage()
+		public void AddWhenAssignmentIsValidShouldAddAssignment()
 		{
 			var repository = Mock.Create<ITwsData>();
 

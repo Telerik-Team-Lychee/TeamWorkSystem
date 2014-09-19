@@ -16,7 +16,7 @@
 	public class TeamWorkControllerTests
 	{
 		[TestMethod]
-		public void AddWhenTeamWorkIsValidShouldAddMessage()
+		public void AddWhenTeamWorkIsValidShouldAddTeamwork()
 		{
 			var repository = Mock.Create<ITwsData>();
 
