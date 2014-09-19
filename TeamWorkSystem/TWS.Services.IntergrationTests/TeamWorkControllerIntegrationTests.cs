@@ -31,5 +31,22 @@
 			Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
 			Assert.IsNotNull(response.Content);
 		}
+
+		[TestMethod]
+		public void PostTeamWorkWhenNameIsNullShouldReturnStatusCode400()
+		{
+			var mockRepository = Mock.Create<ITwsData>();
+
+			Mock.Arrange(() => mockRepository.TeamWorks
+				.Add(Arg.Matches<TeamWork>(cat => cat.Name == null)))
+					.Throws<NullReferenceException>();
+
+
+			var server = new InMemoryHttpServer<TeamWork>("http://localhost/", mockRepository.TeamWorks);
+
+			var response = server.CreatePostRequest("/teamwork/create", Entities.GetValidTeamWork());
+
+			Assert.AreEqual(HttpStatusCode.BadRequest, response.StatusCode);
+		}
 	}
 }
