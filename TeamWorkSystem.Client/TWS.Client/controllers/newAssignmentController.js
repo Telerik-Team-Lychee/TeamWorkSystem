@@ -1,6 +1,6 @@
 ﻿define(["jquery", "modules"], function ($, modules) {
     var assignmentInfo = {};
-    var url = modules.config.apiURL + "Assignment/Create";
+    var url = modules.config.apiURL + "Assignment/Create/";
 
     function run() {
         modules.view.load("newAssignment")
@@ -14,7 +14,7 @@
             }
 
             addEvents();
-        })
+        });
     }
 
     function addEvents() {
@@ -33,12 +33,12 @@
     function addassignment() {
         var data =
             "Name=" + assignmentInfo['Name'] +
-            "Description=" + assignmentInfo['Description'] +
-            "Priority=" + assignmentInfo['Priority'] +
-            "&TeamWorkId=" + assignmentInfo['TeamWorkId'] +
-            "&AssignmentStatus=" + assignmentInfo['AssignmentStatus'];
+            "&Description=" + assignmentInfo['assignmentDescription'] +
+            "&Priority= 10";// + assignmentInfo['Priority'];
+            //"&TeamWorkId=" + assignmentInfo['TeamWorkId'] +
+            //"&Status=" + assignmentInfo['AssignmentStatus'];
 
-        modules.request.post(url, data, "application/x-www-form-urlencoded")
+        modules.request.post(url + assignmentInfo['TeamWorkId'], data, "application/x-www-form-urlencoded")
         .then(function () {
             modules.redirect("#/teamwork/" + assignmentInfo['TeamWorkId']);
         });
