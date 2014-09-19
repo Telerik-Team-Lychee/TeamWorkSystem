@@ -51,7 +51,7 @@
 				return BadRequest(this.ModelState);
 			}
 
-			var teamwork = this.data.TeamWorks.Find(assignment.Id);
+			var teamwork = this.data.TeamWorks.Find(id);
 			if (teamwork == null)
 			{
 				return BadRequest("Teamwork does not exist - invalid id");
@@ -64,7 +64,7 @@
 				Priority = assignment.Priority
 			};
 
-			this.data.Assignments.Add(newAssignment);
+            teamwork.Assignments.Add(newAssignment);
 			this.data.SaveChanges();
 
 			assignment.Id = newAssignment.Id;
