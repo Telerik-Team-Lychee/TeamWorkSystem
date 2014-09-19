@@ -1,20 +1,20 @@
 ﻿define(["jquery", "modules", "pubnub"], function ($, modules) {
-    var teamworkInfo = {};    
+    var teamworkInfo = {};
     var url = modules.config.apiURL + "Teamwork/Create";
     var id = "";
     function run() {
         modules.view.load("newTeamwork")
         modules.request.get(modules.config.apiURL + "TeamWork/GetCategories")
         .then(function (requestData) {
-        if (requestData.length < 2) {
+            if (requestData.length < 2) {
                 $("#CategoriesSelect").loadTemplate([requestData])
-        }
-        else {
+            }
+            else {
                 $("#CategoriesSelect").loadTemplate(requestData)
-        }
+            }
 
             addEvents();
-        }).then(subscribe("Teamwork", "Teamwork created."));    //TODO: Select channel by teamId
+        });
     }
 
     function addEvents() {
@@ -37,53 +37,52 @@
             "&GitHubLink=" + teamworkInfo['GitHubLink'] +
             "&Category=" + teamworkInfo['Category'] +
             "&EndDate=" + teamworkInfo['EndDate'];
-            
+
         modules.request.post(url, data, "application/x-www-form-urlencoded")
         .then(function (requestData) {
             id = requestData.Id;
+            var name = subscribe(requestData);
+            return name;
+
+        }).then(function (name) {
+            publish(name);
             modules.redirect("#/teamwork/" + id);
         });
     }
 
-    //function getId() {
-    //    var url = window.location.href;
-    //    var parts = url.split("/");
-    //    var teamworkId = parts[parts.length - 1];
-    //    console.log(teamworkId)
-    //    return teamworkId;
-    //}
+    function subscribe(requestData) {
+        var publishKey = 'pub-c-c4395ede-b7ee-4ca2-b9d3-324f1c2007ff';
+        var subscribeKey = 'sub-c-248e8f78-3ff2-11e4-b33e-02ee2ddab7fe';
 
-    function subscribe(channel, message) {
-        $('#mainContent').on('click', '#create-teamwork', function () {
+        var pubnub = PUBNUB.init({
+            publish_key: publishKey,
+            subscribe_key: subscribeKey,
+        });
 
-            //modules.request.get(modules.config.apiURL + "TeamWork/ById/" + teamworkid)
-            //.then(function (requestData) {
-            //    var name = requestData.Name;
-            //});
+        pubnub.subscribe({
+            channel: requestData.Name,
+            message: function (message) {
+                $('#notifications').html('<p>' + message + '</p>');
+            }
+        });
 
-            var publishKey = 'pub-c-914d69be-0ad7-4b88-8a4b-fc9543e9fa2d';
-            var subscribeKey = 'sub-c-718ede88-3f0f-11e4-8c81-02ee2ddab7fe';
+        return requestData.Name;
+    }
 
-            var pubnub = PUBNUB.init({
-                publish_key: publishKey,
-                subscribe_key: subscribeKey,
-            });
+    function publish(name) {      
+        var publishKey = 'pub-c-c4395ede-b7ee-4ca2-b9d3-324f1c2007ff';
+        var subscribeKey = 'sub-c-248e8f78-3ff2-11e4-b33e-02ee2ddab7fe';
 
-            pubnub.subscribe({
-                channel: channel,
-                message: function (message) {
-                    $('#notifications').html('<p>' + message + '</p>');
-                }
-            });
-            console.log('subscribed');
-            //console.log(name);
-            //console.log(teamworkid);
-            pubnub.publish({
-                channel: channel,
-                message: message
-            });
-        })
-   }
+        var pubnub = PUBNUB.init({
+            publish_key: publishKey,
+            subscribe_key: subscribeKey,
+        });
+
+        pubnub.publish({
+            channel: name,
+            message: "Teamwork " + name + " created."
+        });
+    }
 
     return {
         run: run
