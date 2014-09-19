@@ -92,6 +92,13 @@
                 });
             });
 
+            this.get("#/deleteAssingment/:id:id2", function () {
+                var assId = this.params['id'];
+                require([appConfig.controllersPath + "deleteAssController"], function (file) {
+                    file.run(assId);
+                });
+            });
+
             this.get("#/newmessage", function () {
                 require([appConfig.controllersPath + "newMessageController"], function (file) {
                     file.run();
