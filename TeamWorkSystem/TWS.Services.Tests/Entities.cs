@@ -52,7 +52,7 @@
 				Priority = 10,
 				Status = AssignmentStatus.Assigned,
 				Name = "Issue64",
-				Description = "Answer 42",
+				Description = "Answer 42"
 			};
 
 			return assignment;

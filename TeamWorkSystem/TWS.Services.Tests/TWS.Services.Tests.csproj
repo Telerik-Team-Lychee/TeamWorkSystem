@@ -84,6 +84,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AssignmentControllerTests.cs" />
     <Compile Include="BaseSetup.cs" />
     <Compile Include="Entities.cs" />
     <Compile Include="Fakes\FakeRepository.cs" />
