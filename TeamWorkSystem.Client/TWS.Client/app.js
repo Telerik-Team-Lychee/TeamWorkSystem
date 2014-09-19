@@ -30,7 +30,15 @@
                     $("a.logIn").hide();
                     $("a.register").hide();
                     $("a.logout").show();
+                    $("a.home").show();
+                } else {
+                    $("a.logIn").show();
+                    $("a.register").show();
+                    $("a.logout").hide();
+                    $("a.home").hide();
+                    window.location.hash = "#/login";
                 }
+                
 
                 require([appConfig.controllersPath + "listTeamWorksController"], function (file) {
                     file.run();
@@ -42,6 +50,7 @@
                 $("a.logIn").show();
                 $("a.register").show();
                 $("a.logout").hide();
+                $("a.home").show();
                 window.location.hash = "#/";
             });
 
@@ -56,12 +65,6 @@
                     file.run();
                 });
             });
-
-            //this.get("#/teamworks", function () {
-            //    require([appConfig.controllersPath + "listTeamWorksController"], function (file) {
-            //        file.run();
-            //    });
-            //});
 
             this.get("#/teamwork/:id", function () {
                 var teamworkId = this.params['id'];
