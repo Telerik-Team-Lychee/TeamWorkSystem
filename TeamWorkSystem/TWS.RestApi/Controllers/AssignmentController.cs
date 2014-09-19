@@ -99,7 +99,7 @@
 			return Ok();
 		}
 
-		[HttpDelete]
+		[HttpGet]
 		public IHttpActionResult Delete(int id)
 		{
 			var existingAssignment = this.GetCurrentAssignment(id);

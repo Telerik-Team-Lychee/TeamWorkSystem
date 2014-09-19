@@ -39,10 +39,7 @@
 
     function deleteAss(assId) {
 
-        modules.request.get(url + "Assignment/Delete/" + assId)
-        .then(function () {
-            modules.redirect("#/login");
-        });
+        modules.request.get(url + "Assignment/Delete/" + assId);
     }
 
     return {
