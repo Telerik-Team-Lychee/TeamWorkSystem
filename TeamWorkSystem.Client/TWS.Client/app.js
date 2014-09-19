@@ -111,8 +111,16 @@
                     file.run();
                 });
             });
+            
         });
 
         app.run("#/");
+
+        hideNotification();
+        function hideNotification() {
+            $('#notifications').on('click', function () {
+                $('#notifications').empty();
+            })
+        }
     });
 }());

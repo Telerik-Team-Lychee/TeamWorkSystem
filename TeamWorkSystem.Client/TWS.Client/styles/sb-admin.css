@@ -164,13 +164,6 @@ body {
 #EndDate {
     width: 110px;
 }
-.not-logged-in {
-
-}
-
-.logged-in {
-
-}
 
 ul.message-dropdown {
     padding: 0;
@@ -323,4 +316,18 @@ ul.alert-dropdown {
 
 #new-message:hover {
     background: #f7f7f7;
+}
+#notifications {
+    position: relative;
+}
+#notifications p{
+    font-size: 1.2em;
+    background: #eee;
+    text-align: center;
+    padding: 10px;
+    width:95%;
+    margin-left:auto;
+    margin-right:auto;
+    border: 1px solid #e7e7e7;
+    border-radius: 5px; 
 }
