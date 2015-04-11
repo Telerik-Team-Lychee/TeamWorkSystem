@@ -16,8 +16,7 @@ Projects are stored in different categories.
 
 ### Additional Notes
 
-*	RestApi: ASP.Net Web API
-*	Client: HTML, CSS, JavaScript
-*	Libraries and frameworks: jQuery, RequireJS, Q, Underscore.js, Sammy.js, mustache
+*	Server-side: ASP.Net Web API
+*	Client-side: HTML, CSS, JavaScript (additional libraries and frameworks: jQuery, RequireJS, Q, Underscore.js, Sammy.js, mustache, Bootstrap)
 
 
